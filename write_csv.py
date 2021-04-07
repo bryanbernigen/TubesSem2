@@ -39,7 +39,7 @@ def write_csv(data_yang_akan_di_save,nama_file_yang_di_save):
             var_dummy+=list_array[j][i]
     #list_panjang.append(var_dummy)
 
-    f=open("{}".format(nama_file_yang_di_save),"w")
+    f=open("csv_datas/{}".format(nama_file_yang_di_save),"w")
     f.write(var_dummy)
 
 

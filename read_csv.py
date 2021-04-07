@@ -5,7 +5,7 @@ Untuk mengubah bentuk data dalam sebuah kolom (string -> integer) silahkan edit 
 '''
 def read_csv(nama_file):
     #Membuka File CSV
-    f = open("{}".format(nama_file),"r")
+    f = open("csv_datas/{}".format(nama_file),"r")
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
@@ -79,7 +79,6 @@ def read_csv(nama_file):
     return data_csv
 
 #Contoh Penggunaan
-'''
+
 a=read_csv("kdrama.csv")
 print(a)
-'''
