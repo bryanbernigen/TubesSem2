@@ -339,6 +339,123 @@ def add_data_gadget(id,gadget):
         else:
             return gadget
 
+def add_data_consumable(id,consumable):
+        os.system("cls")
+        stage=0
+        list_dummy=[]
+        #ID
+        while stage==0:
+            stage+=1
+            os.system("cls")
+            print("ID berhasil dibuat")
+        list_dummy.append(id)
+        #Nama
+        while stage==1:
+            print("ID               : ",id)
+            print("Nama             : ")
+            print("Deskripsi        : ")
+            print("Jumlah           : ")
+            print("Rarity           : ")
+            print("")
+            nama=input("Masukkan nama barang : ")
+            print("Anda akan memasukkan {} sebagai nama barang".format(nama))
+            validasi=input("Apakah sudah benar? (y/n) : ")
+            if validasi=='y':
+                os.system("cls")
+                stage+=1
+                print("Nama barang berhasil dimasukkan")
+            else:
+                os.system("cls")
+                print("Nama barang gagal dimasukkan")
+        list_dummy.append(nama)
+        #Deskripsi
+        while stage==2:
+            print("ID               : ",id)
+            print("Nama             : ",nama)
+            print("Deskripsi        : ")
+            print("Jumlah           : ")
+            print("Rarity           : ")
+            print("")
+            deskripsi=input("Masukkan Deskripsi Benda : ")
+            print("Anda akan memasukkan {} ke deskripsi benda".format(deskripsi))
+            validasi=input("Apakah sudah benar? (y/n) : ")
+            if validasi=='y':
+                os.system("cls")
+                stage+=1
+                print("Deskripsi benda berhasil ditambahkan")
+            else:
+                os.system("cls")
+                print("Deskripsi benda gagal ditambahkan")
+        list_dummy.append(deskripsi)
+        #Jumlah
+        while stage==3:
+            print("ID               : ",id)
+            print("Nama             : ",nama)
+            print("Deskripsi        : ",deskripsi)
+            print("Jumlah           : ")
+            print("Rarity           : ")
+            print("")
+            try:
+                jumlah=int(input("Masukkan jumlah benda : "))
+            except ValueError:
+                os.system("cls")
+                print("Jumlah benda harus dalam bentuk integer")
+            else:
+                jumlah=int(jumlah)
+                if jumlah<0:
+                    os.system("cls")
+                    print("Mohon maaf tahun tidak valid")
+                else:
+                    print("Anda akan memasukkan {} ke jumlah".format(jumlah))
+                    validasi=input("Apakah sudah benar? (y/n) : ")
+                    if validasi=='y':
+                        os.system("cls")
+                        stage+=1
+                        print("Jumlah berhasil dimasukkan")
+                    else:
+                        os.system("cls")
+                        print("jumlah gagal dimasukkan")
+        list_dummy.append(jumlah)
+        #Rarity
+        while stage==4:
+            print("ID               : ",id)
+            print("Nama             : ",nama)
+            print("Deskripsi        : ",deskripsi)
+            print("Jumlah           : ",jumlah)
+            print("Rarity           : ")
+            print("")
+            rarity=input("Masukkan rarity : ")
+            if rarity!="C" and rarity!="B" and rarity!="A" and rarity!="S":
+                os.system("cls")
+                print("Rarity harus berupa 'C','B','A','S'")
+            else:
+                print("Anda akan memasukkan {} ke rarity".format(rarity))
+                validasi=input("Apakah sudah benar? (y/n) : ")
+                if validasi=='y':
+                    os.system("cls")
+                    stage+=1
+                    print("rarity berhasil ditambahkan")
+                else:
+                    os.system("cls")
+                    print("rarity gagal dimasukkan")
+        list_dummy.append(rarity)
+
+        #Validasi terakhir
+        os.system("cls")
+        print("Anda akan menambahkan data berikut:")
+        print("ID               : ",id)
+        print("Nama             : ",nama)
+        print("Deskripsi        : ",deskripsi)
+        print("Jumlah           : ",jumlah)
+        print("Rarity           : ",rarity)
+        verivikasi_akhir=(input("Apakah Anda akan menambah data tersebut? (y/n) : "))
+        if verivikasi_akhir=='y':
+            consumable.append(list_dummy)
+            return consumable
+        else:
+            return consumable
+
+
 #Contoh Penggunaan
 '''
 data=read_csv("clone.csv")
