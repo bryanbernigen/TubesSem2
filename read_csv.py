@@ -134,12 +134,13 @@ def read_user(nama_file):
                     data_csv[j][i]=int(data_csv[j][i])
 
     #Mengubah Array menjadi Bilangan Real (0.0)
+    '''
     def conv_to_float (data_csv,baris_ke):
         for j in range(1,jumlah_baris,1):
             for i in range(jumlah_kolom):
                 if i==baris_ke :
                     data_csv[j][i]=float(data_csv[j][i])
-
+    '''
 
 
 
@@ -209,12 +210,13 @@ def read_gadget(nama_file):
                     data_csv[j][i]=int(data_csv[j][i])
 
     #Mengubah Array menjadi Bilangan Real (0.0)
+    '''
     def conv_to_float (data_csv,baris_ke):
         for j in range(1,jumlah_baris,1):
             for i in range(jumlah_kolom):
                 if i==baris_ke :
                     data_csv[j][i]=float(data_csv[j][i])
-
+    '''
 
 
 
@@ -284,13 +286,14 @@ def read_consumable(nama_file):
                     data_csv[j][i]=int(data_csv[j][i])
 
     #Mengubah Array menjadi Bilangan Real (0.0)
+    '''    
     def conv_to_float (data_csv,baris_ke):
         for j in range(1,jumlah_baris,1):
             for i in range(jumlah_kolom):
                 if i==baris_ke :
                     data_csv[j][i]=float(data_csv[j][i])
 
-
+    '''
 
 
     #Konversi Bentuk dalam Array
@@ -358,12 +361,13 @@ def read_consumable_history(nama_file):
                     data_csv[j][i]=int(data_csv[j][i])
 
     #Mengubah Array menjadi Bilangan Real (0.0)
+    '''
     def conv_to_float (data_csv,baris_ke):
         for j in range(1,jumlah_baris,1):
             for i in range(jumlah_kolom):
                 if i==baris_ke :
                     data_csv[j][i]=float(data_csv[j][i])
-
+    '''
 
 
 
@@ -433,12 +437,13 @@ def read_gadget_borrow_history(nama_file):
                     data_csv[j][i]=int(data_csv[j][i])
 
     #Mengubah Array menjadi Bilangan Real (0.0)
+    '''
     def conv_to_float (data_csv,baris_ke):
         for j in range(1,jumlah_baris,1):
             for i in range(jumlah_kolom):
                 if i==baris_ke :
                     data_csv[j][i]=float(data_csv[j][i])
-
+    '''
 
 
 
@@ -510,12 +515,13 @@ def read_gadget_return_history(nama_file):
                     data_csv[j][i]=int(data_csv[j][i])
 
     #Mengubah Array menjadi Bilangan Real (0.0)
+    '''
     def conv_to_float (data_csv,baris_ke):
         for j in range(1,jumlah_baris,1):
             for i in range(jumlah_kolom):
                 if i==baris_ke :
                     data_csv[j][i]=float(data_csv[j][i])
-
+    '''
 
 
 
