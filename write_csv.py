@@ -3,9 +3,6 @@
 ---
 '''
 
-
-from read_csv import read_csv
-
 #Fungsi memerlukan 2 input yaitu data yang akan di save dan tempat data tersebut akan di save
 #Tempat data tersebut di save harus sudah ada (boleh kosong)
 def write_csv(data_yang_akan_di_save,nama_file_yang_di_save):

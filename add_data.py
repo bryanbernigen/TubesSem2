@@ -42,76 +42,134 @@ def add_data_user(data_yang_akan_ditambah):
 
     #Meminta user untuk memasukkan data yang akan ditambahkan
     #inisialisasi
-    stage=0
-    list_dummy=[]
+    stage=0         #menandakan kolom ke-berapa yang akan diisi
+    list_dummy=[]   #list kosong yang nantinya akan di append ke data utama
     #ID
     while stage==0:
         id=len(data)
         stage+=1
         os.system("cls")
+        print("id berhasil dibuat")
     list_dummy.append(id)
     #username
     while stage==1:
-        print("id berhasil dibuat")
         print("id           : ",id)
+        print("username     :")
+        print("nama         :")
+        print("alamat       :")
+        print("password     :")
+        print("role         :")
         print("") 
         username=input("Masukkan Username : ")
+        if len(username)>20:
+            stage-=1
+            j=jumlah_baris
+            os.system("cls")
+            print("Panjang username maksimal adalah 20 karakter")
         for j in range(jumlah_baris):
             if username==data_yang_akan_ditambah[j][1]:
                 os.system("cls")
                 j=jumlah_baris-1 #agar keluar loop searching unique username"
                 stage-=1 #stage dikurang 1 agar tidak keluar loop while
                 print("Mohon Maaf, username sudah terpakai, mohon coba lagi")
-            else:
-                os.system("cls")
-                print("Username Berhasil dibuat")
+            elif j == jumlah_baris-1:
+                print("Anda akan membuat {} sebagai username".format(username))
+                validasi=input("Apakah sudah benar? (y/n) : ")
+                if validasi=='y':
+                    os.system("cls")
+                    print("Username Berhasil dibuat")
+                else:
+                    os.system("cls")
+                    stage-=1
         stage+=1
     list_dummy.append(username)
     #nama
     while stage==2:
         print("id           : ",id)
         print("username     : ",username)
+        print("nama         :")
+        print("alamat       :")
+        print("password     :")
+        print("role         :")
         print("")
         nama=input("Masukkan nama Anda : ")
-        stage+=1
-        os.system("cls")
+        print("Anda akan membuat {} sebagai nama Anda".format(nama))
+        validasi=input("Apakah sudah benar? (y/n) : ")
+        if validasi=='y':
+            stage+=1
+            os.system("cls")
+            print("nama berhasil dibuat")
+        else:
+            os.system("cls")
+            print("nama gagal dibuat")
     list_dummy.append(nama)
     #alamat
     while stage==3:
-        print("nama berhasil dibuat")
         print("id           : ",id)
         print("username     : ",username)
         print("nama         : ",nama)
+        print("alamat       :")
+        print("password     :")
+        print("role         :")
         print("")
         alamat=input("Masukkan alamat Anda : ")
-        stage+=1
-        os.system("cls")
+        print('Anda akan memasukkan {} sebagai alamat Anda'.format(alamat))
+        validasi=input("Apakah sudah benar? (y/n) : ")
+        if validasi=='y':
+            stage+=1
+            os.system("cls")
+            print("alamat berhasil dibuat")
+        else:
+            os.system("cls")
+            print("Alamat gagal dimasukkan ke data")
     list_dummy.append(alamat)
     #password
     while stage==4:
-        print("alamat berhasil dibuat")
         print("id           : ",id)
         print("username     : ",username)
         print("nama         : ",nama)
         print("alamat       : ",alamat)
+        print("password     :")
+        print("role         :")
         print("")
         password=input("Masukkan password Anda : ")
-        password_hashed=hashing(password,username)
-        stage+=1
-        os.system("cls")
+        if len(password)<12:
+            print("Anda akan membuat {} sebagai passowrd Anda".format(password))
+            validasi=input("Apakah sudah benar? (y/n) : ")
+            if validasi=='y':
+                password_hashed=hashing(password,username)
+                stage+=1
+                os.system("cls")
+                print("password berhasil dibuat")
+            else:
+                os.system("cls")
+                print("password gagal dibuat")
+        else:
+            os.system("cls")
+            print("Makasimal panjang password adalah 12 karakter")
     list_dummy.append(password_hashed)
     #role
     while stage==5:
-        print("password berhasil dibuat")
         print("id           : ",id)
         print("username     : ",username)
         print("nama         : ",nama)
         print("alamat       : ",alamat)
         print("password     : ",password)
+        print("role         :")
         print("")
         role=input("Masukkan role Anda : ")
-        stage+=1
-        os.system("cls")
+        if role!="admin" and role!="user":
+            os.system("cls")
+            print("role hanya ada admin atau user")
+        else:
+            print("Anda akan memasukkan {} sebagai role Anda".format(role)) 
+            validasi=input("Apakah sudah benar? (y/n) : ")
+            if validasi=='y':
+                stage+=1
+                os.system("cls")
+            else:
+                os.system("cls")
+                print("role gagal dimuat")
     list_dummy.append(role)
 
     #Verivikasi akhir
@@ -122,7 +180,7 @@ def add_data_user(data_yang_akan_ditambah):
     print("alamat       : ",alamat)
     print("pasword      : ",password)
     print("role         : ",role)   
-    verivikasi_akhir=str(input("Apakah Anda akan menambah data tersebut? (y/n)"))
+    verivikasi_akhir=str(input("Apakah Anda akan menambah data tersebut? (y/n) : "))
     if verivikasi_akhir=='y':
         #memasukkan ke data utama
         data.append(list_dummy)
