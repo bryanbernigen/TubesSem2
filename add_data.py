@@ -35,8 +35,8 @@ def add_data(data_yang_akan_ditambah):
     #memasukkan ke data utama
     data.append(list_dummy)
 
-def add_data_user(data_yang_akan_ditambah):
-    data=data_yang_akan_ditambah
+def add_data_user(user):
+    data=user
     jumlah_baris=len(data)
     #jumlah_kolom=len(data[0])
 
@@ -67,21 +67,20 @@ def add_data_user(data_yang_akan_ditambah):
             os.system("cls")
             print("Panjang username maksimal adalah 20 karakter")
         for j in range(jumlah_baris):
-            if username==data_yang_akan_ditambah[j][1]:
+            if username==user[j][1]:
                 os.system("cls")
                 j=jumlah_baris-1 #agar keluar loop searching unique username"
-                stage-=1 #stage dikurang 1 agar tidak keluar loop while
                 print("Mohon Maaf, username sudah terpakai, mohon coba lagi")
             elif j == jumlah_baris-1:
                 print("Anda akan membuat {} sebagai username".format(username))
                 validasi=input("Apakah sudah benar? (y/n) : ")
                 if validasi=='y':
                     os.system("cls")
+                    stage+=1
                     print("Username Berhasil dibuat")
                 else:
                     os.system("cls")
-                    stage-=1
-        stage+=1
+                    print("Username gagal dibuat")
     list_dummy.append(username)
     #nama
     while stage==2:
@@ -180,7 +179,7 @@ def add_data_user(data_yang_akan_ditambah):
     print("alamat       : ",alamat)
     print("pasword      : ",password)
     print("role         : ",role)   
-    verivikasi_akhir=str(input("Apakah Anda akan menambah data tersebut? (y/n) : "))
+    verivikasi_akhir=(input("Apakah Anda akan menambah data tersebut? (y/n) : "))
     if verivikasi_akhir=='y':
         #memasukkan ke data utama
         data.append(list_dummy)
@@ -189,6 +188,156 @@ def add_data_user(data_yang_akan_ditambah):
     else:
         print("Data tidak ditambah")
         return data
+
+def add_data_gadget(id,gadget):
+        os.system("cls")
+        stage=0
+        list_dummy=[]
+        #ID
+        while stage==0:
+            stage+=1
+            os.system("cls")
+            print("ID berhasil dibuat")
+        list_dummy.append(id)
+        #Nama
+        while stage==1:
+            print("ID               : ",id)
+            print("Nama             : ")
+            print("Deskripsi        : ")
+            print("Jumlah           : ")
+            print("Rarity           : ")
+            print("Tahun Ditemukan  : ")
+            print("")
+            nama=input("Masukkan nama barang : ")
+            print("Anda akan memasukkan {} sebagai nama barang".format(nama))
+            validasi=input("Apakah sudah benar? (y/n) : ")
+            if validasi=='y':
+                os.system("cls")
+                stage+=1
+                print("Nama barang berhasil dimasukkan")
+            else:
+                os.system("cls")
+                print("Nama barang gagal dimasukkan")
+        list_dummy.append(nama)
+        #Deskripsi
+        while stage==2:
+            print("ID               : ",id)
+            print("Nama             : ",nama)
+            print("Deskripsi        : ")
+            print("Jumlah           : ")
+            print("Rarity           : ")
+            print("Tahun Ditemukan  : ")
+            print("")
+            deskripsi=input("Masukkan Deskripsi Benda : ")
+            print("Anda akan memasukkan {} ke deskripsi benda".format(deskripsi))
+            validasi=input("Apakah sudah benar? (y/n) : ")
+            if validasi=='y':
+                os.system("cls")
+                stage+=1
+                print("Deskripsi benda berhasil ditambahkan")
+            else:
+                os.system("cls")
+                print("Deskripsi benda gagal ditambahkan")
+        list_dummy.append(deskripsi)
+        #Jumlah
+        while stage==3:
+            print("ID               : ",id)
+            print("Nama             : ",nama)
+            print("Deskripsi        : ",deskripsi)
+            print("Jumlah           : ")
+            print("Rarity           : ")
+            print("Tahun Ditemukan  : ")
+            print("")
+            try:
+                jumlah=int(input("Masukkan jumlah benda : "))
+            except ValueError:
+                os.system("cls")
+                print("Jumlah benda harus dalam bentuk integer")
+            else:
+                jumlah=int(jumlah)
+                if jumlah<0:
+                    os.system("cls")
+                    print("Mohon maaf tahun tidak valid")
+                else:
+                    print("Anda akan memasukkan {} ke jumlah".format(jumlah))
+                    validasi=input("Apakah sudah benar? (y/n) : ")
+                    if validasi=='y':
+                        os.system("cls")
+                        stage+=1
+                        print("Jumlah berhasil dimasukkan")
+                    else:
+                        os.system("cls")
+                        print("jumlah gagal dimasukkan")
+        list_dummy.append(jumlah)
+        #Rarity
+        while stage==4:
+            print("ID               : ",id)
+            print("Nama             : ",nama)
+            print("Deskripsi        : ",deskripsi)
+            print("Jumlah           : ",jumlah)
+            print("Rarity           : ")
+            print("Tahun Ditemukan  : ")
+            print("")
+            rarity=input("Masukkan rarity : ")
+            if rarity!="C" and rarity!="B" and rarity!="A" and rarity!="S":
+                os.system("cls")
+                print("Rarity harus berupa 'C','B','A','S'")
+            else:
+                print("Anda akan memasukkan {} ke rarity".format(rarity))
+                validasi=input("Apakah sudah benar? (y/n) : ")
+                if validasi=='y':
+                    os.system("cls")
+                    stage+=1
+                    print("rarity berhasil ditambahkan")
+                else:
+                    os.system("cls")
+                    print("rarity gagal dimasukkan")
+        list_dummy.append(rarity)
+        #Tahun
+        while stage==5:
+            print("ID               : ",id)
+            print("Nama             : ",nama)
+            print("Deskripsi        : ",deskripsi)
+            print("Jumlah           : ",jumlah)
+            print("Rarity           : ",rarity)
+            print("Tahun Ditemukan  : ")
+            print("")
+            try:
+                tahun=int(input("Masukkan tahun benda ditemukkan : "))
+            except ValueError:
+                os.system("cls")
+                print("Jumlah benda harus dalam bentuk integer")
+            else:
+                if tahun<0:
+                    os.system("cls")
+                    print("Mohon maaf tahun tidak valid")
+                else:
+                    print("Anda akan memasukkan {} ke tahun ditemukan".format(tahun))
+                    validasi=input("Apakah sudah benar? (y/n) : ")
+                    if validasi=='y':
+                        os.system("cls")
+                        stage+=1
+                        print("Tahun ditemukan berhasil dimasukkan")
+                    else:
+                        os.system("cls")
+                        print("Tahun ditemukan gagal dimasukkan")
+        list_dummy.append(tahun)
+
+        #Validasi terakhir
+        os.system("cls")
+        print("Anda akan menambahkan data berikut:")
+        print("ID               : ",id)
+        print("Nama             : ",nama)
+        print("Deskripsi        : ",deskripsi)
+        print("Jumlah           : ",jumlah)
+        print("Rarity           : ",rarity)
+        print("Tahun Ditemukan  : ",tahun)
+        verivikasi_akhir=(input("Apakah Anda akan menambah data tersebut? (y/n) : "))
+        if verivikasi_akhir=='y':
+            gadget.append(list_dummy)
+            return gadget
+        else:
+            return gadget
 
 #Contoh Penggunaan
 '''
