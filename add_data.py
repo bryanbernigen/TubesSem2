@@ -692,6 +692,30 @@ def delete_gadget(id_gadget_yang_akan_dihapus,gadget):
             return gadget
         else:
             return gadget
+
+def delete_consumable(id_consumable_yang_akan_dihapus,consumable):
+    os.system("cls")
+    baris_consumable=0
+    for j in range(len(consumable)):
+        if id_consumable_yang_akan_dihapus==consumable[j][0]:
+            baris_consumable=j
+    if baris_consumable==0:
+        print("Tidak ada item dengan ID tersebut")
+    else:
+        print("ID Consumable    : ",consumable[baris_consumable][0])
+        print("Nama Consumable  : ",consumable[baris_consumable][1])
+        print("Deskripsi        : ",consumable[baris_consumable][2])
+        print("Jumlah           : ",consumable[baris_consumable][3])
+        print("Rarity           : ",consumable[baris_consumable][4])
+        print("")
+        validasi=input("Apakah Anda yakin akan menghapus consumable tersebut? (y/n) : ")
+        if validasi=='y':
+            del consumable[baris_consumable]
+            return consumable
+        else:
+            return consumable
+
+
 #Contoh Penggunaan
 '''
 data=read_csv("clone.csv")
