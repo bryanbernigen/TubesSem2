@@ -670,7 +670,28 @@ def add_data_gadget_borrow_history(id_pengambil,gadget,gadget_history):
     else:
         return gadget,gadget_history
 
-
+def delete_gadget(id_gadget_yang_akan_dihapus,gadget):
+    os.system("cls")
+    baris_gadget=0
+    for j in range(len(gadget)):
+        if id_gadget_yang_akan_dihapus==gadget[j][0]:
+            baris_gadget=j
+    if baris_gadget==0:
+        print("Tidak ada item dengan ID tersebut")
+    else:
+        print("ID gadget        : ",gadget[baris_gadget][0])
+        print("Nama gadget      : ",gadget[baris_gadget][1])
+        print("Deskripsi        : ",gadget[baris_gadget][2])
+        print("Jumlah           : ",gadget[baris_gadget][3])
+        print("Rarity           : ",gadget[baris_gadget][4])
+        print("Tahun ditemukan  : ",gadget[baris_gadget][5])
+        print("")
+        validasi=input("Apakah Anda yakin akan menghapus gadget tersebut? (y/n) : ")
+        if validasi=='y':
+            del gadget[baris_gadget]
+            return gadget
+        else:
+            return gadget
 #Contoh Penggunaan
 '''
 data=read_csv("clone.csv")
