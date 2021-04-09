@@ -171,7 +171,7 @@ def read_gadget(nama_file):
 
 
     #Menghitung Jumlah Baris
-    jumlah_data = 0 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
+    jumlah_data = 1 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
     for j in range(len(lines_all_koma)):
         for i in range (len(lines_all_koma[j])):
             if lines_all_koma[j][i]==',':
