@@ -374,7 +374,6 @@ def read_consumable_history(nama_file):
     #Konversi Bentuk dalam Array
     conv_to_int(data_csv,0)
     conv_to_int(data_csv,1)
-    conv_to_int(data_csv,3)
 
 
     #HASIL
@@ -450,7 +449,6 @@ def read_gadget_borrow_history(nama_file):
     #Konversi Bentuk dalam Array
     conv_to_int(data_csv,0)
     conv_to_int(data_csv,1)
-    conv_to_int(data_csv,3)
     conv_to_int(data_csv,4)
 
 
@@ -528,7 +526,6 @@ def read_gadget_return_history(nama_file):
     #Konversi Bentuk dalam Array
     conv_to_int(data_csv,0)
     conv_to_int(data_csv,1)
-    conv_to_int(data_csv,3)
 
 
     #HASIL
