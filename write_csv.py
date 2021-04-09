@@ -29,7 +29,7 @@ def write_csv(data_yang_akan_di_save,nama_file_yang_di_save):
     for j in range (len(list_array)):
         if j>0:
             if j%jumlah_kolom == 0:
-                var_dummy+="\n "
+                var_dummy+="\n"
             else:
                 var_dummy+=","
         for i in range(len(list_array[j])):
