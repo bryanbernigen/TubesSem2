@@ -563,6 +563,114 @@ def add_data_consumable_history(id_pengambil,consumable,consumable_history):
     else:
         return consumable,consumable_history
 
+def add_data_gadget_borrow_history(id_pengambil,gadget,gadget_history):
+    data=gadget_history
+    os.system("cls")
+    stage=0
+    list_dummy=[]
+    #ID pengambilan
+    while stage==0:
+        stage+=1
+    list_dummy.append(len(data))
+    #ID pengambil
+    while stage==1:
+        stage+=1
+    list_dummy.append(id_pengambil)
+    #ID gadget
+    while stage==2:
+        print("ID gadget        : ")
+        print("Nama gadget      : ")
+        print("Jumlah           : ")
+        print("Tanggal          : ")
+        print("")
+        id_gadget=input("Masukkan ID consumbale yang akan di ambil : ")
+        for j in range(len(gadget)):
+            if id_gadget==gadget[j][0]:
+                j=len(gadget)-1 #agar langsung keluar loop for j
+                os.system("cls")
+                print("ID               : ",gadget[j][0])
+                print("Nama             : ",gadget[j][1])
+                print("Deskripsi        : ",gadget[j][2])
+                print("Jumlah           : ",gadget[j][3])
+                print("Rarity           : ",gadget[j][4])
+                print("Tahun Ditemukan  : ",gadget[j][5])
+                print("")
+                valisdasi=input("Apakah Anda akan mengambil gadget tersebut? (y/n) : ")
+                if valisdasi=='y':
+                    os.system("cls")
+                    nomor_gadget=j
+                    nama_gadget=gadget[j][1]
+                    stage+=1
+                else:
+                    os.system("cls")
+            elif(j==len(gadget)-1):
+                os.system("cls")
+                print("gadget tidak terdaftar")
+    list_dummy.append(id_gadget)
+    #Jumlah 
+    #ditambahkan pada kolom ke-5
+    while stage==3:
+        print("ID gadget        : ",id_gadget)
+        print("Nama gadget      : ",nama_gadget)
+        print("Jumlah           : ")
+        print("Tanggal          : ")
+        print("")
+        try:
+            jumlah=int(input("Masukkan jumlah gadget yang akan diambil : "))
+        except ValueError:
+            os.system("cls")
+            print("Jumlah harus dalam bentuk bilangan bulat")
+        else:
+            if jumlah<0:
+                os.system("cls")
+                print("Jumlah harus lebih dari 0")
+            elif gadget[nomor_gadget][3]-jumlah<0:
+                os.system("cls")
+                print("Jumlanh yang akan diambil melebihi persediaan. Jumlah penagambilan maksimal: {}".format(gadget[nomor_gadget][3]))
+            else:
+                print("Anda akan mengambil {} sebanyak {} buah".format(nama_gadget,jumlah))
+                validasi=input("Apakah sudah benar? (y/n) : ")
+                if validasi=='y':
+                    os.system("cls")
+                    stage+=1
+                else:
+                    os.system("cls")
+    #tanggal
+    while stage==4:
+        print("ID gadget        : ",id_gadget)
+        print("Nama gadget      : ",nama_gadget)
+        print("Jumlah           : ",jumlah)
+        print("Tanggal          : ")
+        print("")
+        tanggal=input("Masukkan tanggal pengambilan (dd/mm/yyyy) : ")
+        print("Anda akan memasukkan {} sebagai tanggal pengambilan".format(tanggal))
+        validasi=input("Apakah sudah benar? (y/n) : ")
+        if validasi=='y':
+            os.system("cls")
+            stage+=1
+        else:
+            os.system("cls")
+            print("Tanggal gagal dimasukkan")
+    list_dummy.append(tanggal)
+    list_dummy.append(jumlah)
+
+    #Verifikasi Terakhir
+    print("ID pengambil     : ",id_pengambil)
+    print("ID gadget        : ",id_gadget)
+    print("Nama gadget      : ",nama_gadget)
+    print("Jumlah           : ",jumlah)
+    print("Tanggal          : ",tanggal)
+    print("")
+    print("Anda akan mengambil gadget sesuai data tersebut")
+    verivikasi_akhir=input("Apakah sudah benar? (y/n) : ")
+    if verivikasi_akhir=='y':
+        gadget[nomor_gadget][3]=gadget[nomor_gadget][3]-jumlah
+        gadget_history.append(list_dummy)
+        return gadget,gadget_history
+    else:
+        return gadget,gadget_history
+
+
 #Contoh Penggunaan
 '''
 data=read_csv("clone.csv")
