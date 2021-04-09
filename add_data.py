@@ -189,6 +189,7 @@ def add_data_user(user):
         print("Data tidak ditambah")
         return data
 
+#ID yang dimaskud adalah ID gadgetnya
 def add_data_gadget(id,gadget):
         os.system("cls")
         stage=0
@@ -339,6 +340,7 @@ def add_data_gadget(id,gadget):
         else:
             return gadget
 
+#ID yang dimaksud adalah ID comsumablenya
 def add_data_consumable(id,consumable):
         os.system("cls")
         stage=0
@@ -455,6 +457,111 @@ def add_data_consumable(id,consumable):
         else:
             return consumable
 
+#Masukkan ID usernya bukan usernamenya
+def add_data_consumable_history(id_pengambil,consumable,consumable_history):
+    data=consumable_history
+    os.system("cls")
+    stage=0
+    list_dummy=[]
+    #ID pengambilan
+    while stage==0:
+        stage+=1
+    list_dummy.append(len(data))
+    #ID pengambil
+    while stage==1:
+        stage+=1
+    list_dummy.append(id_pengambil)
+    #ID consumable
+    while stage==2:
+        print("ID Consumable    : ")
+        print("Nama Consumable  : ")
+        print("Jumlah           : ")
+        print("Tanggal          : ")
+        print("")
+        id_consumable=input("Masukkan ID consumbale yang akan di ambil : ")
+        for j in range(len(consumable)):
+            if id_consumable==consumable[j][0]:
+                j=len(consumable)-1 #agar langsung keluar loop for j
+                os.system("cls")
+                print("ID           :",consumable[j][0])
+                print("Nama         :",consumable[j][1])
+                print("Deskripsi    :",consumable[j][2])
+                print("Jumlah       :",consumable[j][3])
+                print("Rarity       :",consumable[j][4])
+                print("")
+                valisdasi=input("Apakah Anda akan mengambil consumable tersebut? (y/n) : ")
+                if valisdasi=='y':
+                    os.system("cls")
+                    nomor_consumable=j
+                    nama_consumable=consumable[j][1]
+                    stage+=1
+                else:
+                    os.system("cls")
+            elif(j==len(consumable)-1):
+                os.system("cls")
+                print("Consumable tidak terdaftar")
+    list_dummy.append(id_consumable)
+    #Jumlah 
+    # (tidak ditambahkan ke dalam data consumable_history.csv)
+    while stage==3:
+        print("ID Consumable    : ",id_consumable)
+        print("Nama Consumable  : ",nama_consumable)
+        print("Jumlah           : ")
+        print("Tanggal          : ")
+        print("")
+        try:
+            jumlah=int(input("Masukkan jumlah consumable yang akan diambil : "))
+        except ValueError:
+            os.system("cls")
+            print("Jumlah harus dalam bentuk bilangan bulat")
+        else:
+            if jumlah<0:
+                os.system("cls")
+                print("Jumlah harus lebih dari 0")
+            elif consumable[nomor_consumable][3]-jumlah<0:
+                os.system("cls")
+                print("Jumlanh yang akan diambil melebihi persediaan. Jumlah penagambilan maksimal: {}".format(consumable[nomor_consumable][3]))
+            else:
+                print("Anda akan mengambil {} sebanyak {} buah".format(nama_consumable,jumlah))
+                validasi=input("Apakah sudah benar? (y/n) : ")
+                if validasi=='y':
+                    os.system("cls")
+                    stage+=1
+                else:
+                    os.system("cls")
+    #tanggal
+    while stage==4:
+        print("ID Consumable    : ",id_consumable)
+        print("Nama Consumable  : ",nama_consumable)
+        print("Jumlah           : ",jumlah)
+        print("Tanggal          : ")
+        print("")
+        tanggal=input("Masukkan tanggal pengambilan (dd/mm/yyyy) : ")
+        print("Anda akan memasukkan {} sebagai tanggal pengambilan".format(tanggal))
+        validasi=input("Apakah sudah benar? (y/n) : ")
+        if validasi=='y':
+            os.system("cls")
+            stage+=1
+        else:
+            os.system("cls")
+            print("Tanggal gagal dimasukkan")
+    list_dummy.append(tanggal)
+
+    #Verifikasi Terakhir
+    print("ID pengambil     : ",id_pengambil)
+    print("ID Consumable    : ",id_consumable)
+    print("Nama Consumable  : ",nama_consumable)
+    print("Jumlah           : ",jumlah)
+    print("Tanggal          : ",tanggal)
+    print("")
+    print("Anda akan mengambil consumable sesuai data tersebut")
+    verivikasi_akhir=input("Apakah sudah benar? (y/n) : ")
+    if verivikasi_akhir=='y':
+        consumable[nomor_consumable][3]=consumable[nomor_consumable][3]-jumlah
+        consumable_history.append(list_dummy)
+        return consumable,consumable_history
+    else:
+        return consumable,consumable_history
 
 #Contoh Penggunaan
 '''
