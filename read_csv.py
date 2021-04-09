@@ -297,7 +297,6 @@ def read_consumable(nama_file):
 
 
     #Konversi Bentuk dalam Array
-    #conv_to_int(data_csv,0)
     conv_to_int(data_csv,3)
 
 
