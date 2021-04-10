@@ -3,6 +3,9 @@
 Jika data pada kolom terakhir mengandung "," maka ubahlah inisialisasi jumlah data pada Menghitung Jumlah Baris menjadi 0
 Untuk mengubah bentuk data dalam sebuah kolom (string -> integer) silahkan edit pada bagian Konversi Bentuk dalam array
 '''
+
+import os
+
 '''
 def read_csv(nama_file):
     #Membuka File CSV
@@ -77,9 +80,9 @@ def read_csv(nama_file):
     #HASIL
     return data_csv
 '''
-def read_user(nama_file):
+def read_user(nama_file,path_ralatif_terhadap_sekarang):
     #Membuka File CSV
-    f = open("csv_datas/{}".format(nama_file),"r")
+    f = open("{}/{}".format(path_ralatif_terhadap_sekarang,nama_file),"r")
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
@@ -153,9 +156,9 @@ def read_user(nama_file):
     #HASIL
     return data_csv
 
-def read_gadget(nama_file):
+def read_gadget(nama_file,path_ralatif_terhadap_sekarang):
     #Membuka File CSV
-    f = open("csv_datas/{}".format(nama_file),"r")
+    f = open("{}/{}".format(path_ralatif_terhadap_sekarang,nama_file),"r")
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
@@ -229,9 +232,9 @@ def read_gadget(nama_file):
     #HASIL
     return data_csv
 
-def read_consumable(nama_file):
+def read_consumable(nama_file,path_ralatif_terhadap_sekarang):
     #Membuka File CSV
-    f = open("csv_datas/{}".format(nama_file),"r")
+    f = open("{}/{}".format(path_ralatif_terhadap_sekarang,nama_file),"r")
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
@@ -303,9 +306,9 @@ def read_consumable(nama_file):
     #HASIL
     return data_csv
 
-def read_consumable_history(nama_file):
+def read_consumable_history(nama_file,path_ralatif_terhadap_sekarang):
     #Membuka File CSV
-    f = open("csv_datas/{}".format(nama_file),"r")
+    f = open("{}/{}".format(path_ralatif_terhadap_sekarang,nama_file),"r")
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
@@ -378,7 +381,7 @@ def read_consumable_history(nama_file):
     #HASIL
     return data_csv
 
-def read_gadget_borrow_history(nama_file):
+def read_gadget_borrow_history(nama_file,path_ralatif_terhadap_sekarang):
     #Membuka File CSV
     f = open("csv_datas/{}".format(nama_file),"r")
     raw_lines = f.readlines()
@@ -455,9 +458,9 @@ def read_gadget_borrow_history(nama_file):
     #HASIL
     return data_csv
 
-def read_gadget_return_history(nama_file):
+def read_gadget_return_history(nama_file,path_ralatif_terhadap_sekarang):
     #Membuka File CSV
-    f = open("csv_datas/{}".format(nama_file),"r")
+    f = open("{}/{}".format(path_ralatif_terhadap_sekarang,nama_file),"r")
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
@@ -530,6 +533,41 @@ def read_gadget_return_history(nama_file):
     #HASIL
     return data_csv
 
+#Cara Pakai ada di dalam fungsi ini
+def load(path_relatif_terhadap_sekarang):
+    #Cara Pakai:
+    '''
+    Data=load("path_relatif_terhadap_sekarang")
+    Loaded=data[0]  #menandakana data ada atau tidak
+    user=data[1]
+    gadget=data[2]
+    .
+    .
+    dst
+    '''
+
+    current_path=os.getcwd()
+    new_path=os.path.join(current_path,path_relatif_terhadap_sekarang)
+    global user
+    global gadget
+    global consumable
+    global consumable_history
+    global gadget_borrow_history
+    global gadget_return_history
+    global loaded
+    if os.path.exists(new_path):
+        user=read_user("user.csv",path_relatif_terhadap_sekarang)
+        gadget=read_gadget("gadget.csv",path_relatif_terhadap_sekarang)
+        consumable=read_consumable("consumable.csv",path_relatif_terhadap_sekarang)
+        consumable_history=read_consumable_history("consumable_history.csv",path_relatif_terhadap_sekarang)
+        gadget_borrow_history=read_gadget_borrow_history("gadget_borrow_history.csv",path_relatif_terhadap_sekarang)
+        gadget_return_history=read_gadget_return_history("gadget_return_history.csv",path_relatif_terhadap_sekarang)
+        loaded = True
+        return loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history
+    else:
+        print("Tidak ada data")
+        loaded = False
+        return loaded
 
 #Contoh Penggunaan
 '''
