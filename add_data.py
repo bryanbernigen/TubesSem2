@@ -481,19 +481,19 @@ def add_data_consumable_history(id_pengambil,consumable,consumable_history):
         id_consumable=input("Masukkan ID consumbale yang akan di ambil : ")
         for j in range(len(consumable)):
             if id_consumable==consumable[j][0]:
+                nomor_consumable=j
                 j=len(consumable)-1 #agar langsung keluar loop for j
                 os.system("cls")
-                print("ID           :",consumable[j][0])
-                print("Nama         :",consumable[j][1])
-                print("Deskripsi    :",consumable[j][2])
-                print("Jumlah       :",consumable[j][3])
-                print("Rarity       :",consumable[j][4])
+                print("ID           :",consumable[nomor_consumable][0])
+                print("Nama         :",consumable[nomor_consumable][1])
+                print("Deskripsi    :",consumable[nomor_consumable][2])
+                print("Jumlah       :",consumable[nomor_consumable][3])
+                print("Rarity       :",consumable[nomor_consumable][4])
                 print("")
                 valisdasi=input("Apakah Anda akan mengambil consumable tersebut? (y/n) : ")
                 if valisdasi=='y':
                     os.system("cls")
-                    nomor_consumable=j
-                    nama_consumable=consumable[j][1]
+                    nama_consumable=consumable[nomor_consumable][1]
                     stage+=1
                 else:
                     os.system("cls")
