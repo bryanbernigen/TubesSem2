@@ -156,7 +156,7 @@ def add_data_user(user):
         print("password     : ",password)
         print("role         :")
         print("")
-        role=input("Masukkan role Anda : ")
+        role="user"
         if role!="admin" and role!="user":
             os.system("cls")
             print("role hanya ada admin atau user")
