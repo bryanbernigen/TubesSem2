@@ -546,6 +546,7 @@ def add_data_consumable_history(id_pengambil,consumable,consumable_history):
             os.system("cls")
             print("Tanggal gagal dimasukkan")
     list_dummy.append(tanggal)
+    list_dummy.append(jumlah)
 
     #Verifikasi Terakhir
     print("ID pengambil     : ",id_pengambil)
