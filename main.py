@@ -83,6 +83,11 @@ while login==True:
         add_data_gadget_borrow_history(id,gadget,gadget_borrow_history)
     #F09 - Menegmbalikan Gadget
     #F10 - Meminta Consumable
+    if pilihan=='minta':
+        #Validasi user
+        #sementara id digenerate. Nantinya merupakan current_user
+        id=1
+        add_data_consumable_history(id,consumable,consumable_history)
     #F11 - Melihat Riwayat Peminjaman Gadget
     #F12 - Melihat Riwayat Penembalian Gadget
     #F13 - Melihat Riwayat Pengambilan Consumable
