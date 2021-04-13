@@ -671,6 +671,78 @@ def add_data_gadget_borrow_history(id_pengambil,gadget,gadget_history):
     else:
         return gadget,gadget_history
 
+def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,gadget_return_history):
+    #membuat list gadget apa saja yang pernah dipinjam user
+    list_gadget_user_all=[]
+    for j in range(len(gadget_borrow_history)):
+        list_dummy=[]
+        if gadget_borrow_history[j][1]==id_pengembali:
+            added=False
+            for i in range(len(list_gadget_user_all)):
+                if gadget_borrow_history[j][2]==list_gadget_user_all[i][0]:
+                    list_gadget_user_all[i][2]+=gadget_borrow_history[j][4]
+                    added=True
+            if not added:
+                list_dummy.append(gadget_borrow_history[j][2])
+                for jj in range(len(gadget)):
+                    if gadget[jj][0]==gadget_borrow_history[j][2]:
+                        list_dummy.append(gadget[jj][1])
+                list_dummy.append(gadget_borrow_history[j][4])
+                list_gadget_user_all.append(list_dummy)
+    
+    #Mengecek Gadget Apa saja yang sudah dikembalikan
+    for j in range(len(gadget_return_history)):
+        if gadget_return_history[j][1]==id_pengembali:
+            for jj in range(len(list_gadget_user_all)):
+                if gadget_return_history[j][2]==list_gadget_user_all[jj][0]:
+                    list_gadget_user_all[jj][2]-=gadget_return_history[j][4]
+    
+    #Menghapus Gadget yang sudah dikembalikan sepenuhnya
+    n=0
+    for j in range(len(list_gadget_user_all)):
+       i=j-n
+       if list_gadget_user_all[i][2]==0:
+           del list_gadget_user_all[i]
+           n+=1 
+
+    #Mencetak Gadget apa saja yang masih dipinjam user tersebut
+    print(f"{'NO':<5} {'ID':<5} {'Nama Gadget':<30} {'Jumlah':<10}")
+    for j in range(len(list_gadget_user_all)):
+        print("{:<5} {:<5} {:<30} {:<10}".format(j+1,list_gadget_user_all[j][0],list_gadget_user_all[j][1],list_gadget_user_all[j][2]))
+
+    #Menanyakan User Gadget mana yang akan dikembalikan
+    id_gadget_yang_akan_dikembalikan=input("Masukkan ID Gadget yang akan dikembalikan : ")
+    found=False
+    for j in range(len(list_gadget_user_all)):
+        if id_gadget_yang_akan_dikembalikan==list_gadget_user_all[j][0]:
+            jumlah_yang_akan_dikembalikan=int(input("Masukkan Banyak Gadget yang akan dikembalikan : "))
+            if jumlah_yang_akan_dikembalikan>list_gadget_user_all[j][2]:
+                print("Jumlah Gadget yang akan dikembalikan melebihi jumlah gadget yang dipinjam")
+            else:
+                nama_gadget_yang_akan_dikembalikan=list_gadget_user_all[j][1]
+                tanggal=input("Masukkan tanggal pengembalian : ")
+                found=True
+    
+    #Jika Input ID salah
+    if not found:
+        return
+
+    #Validasi Pengembalian
+    print("ID Gadget            : ",id_gadget_yang_akan_dikembalikan)
+    print("Nama Gadget          : ",nama_gadget_yang_akan_dikembalikan)
+    print("Jumlah               : ",jumlah_yang_akan_dikembalikan)
+    print("Tanggal Pengembalian : ",tanggal)
+    print("Anda akan mengembalikan Gagdet sesuai data tersebut")
+    verivikasi_akhir=input("Apakah sudah benar? (y/n) : ")
+    if verivikasi_akhir=='y':
+        list_dummy=[]
+        list_dummy.append(len(gadget_return_history))
+        list_dummy.append(id_pengembali)
+        list_dummy.append(id_gadget_yang_akan_dikembalikan)
+        list_dummy.append(tanggal)
+        list_dummy.append(jumlah_yang_akan_dikembalikan)
+        gadget_return_history.append(list_dummy)
+
 def delete_gadget(id_gadget_yang_akan_dihapus,gadget):
     os.system("cls")
     baris_gadget=0
