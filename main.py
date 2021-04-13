@@ -54,15 +54,13 @@ while login==True:
     #F03 - Pencarian Gadget Berdasarkan Rarity
     #F04 - Pencarian Gadget Berdasarkan Tahun
     #F05 - Menambah Item
-    ''' 
     if pilihan=='tambahitem':
-        if current_role=='admin':
-            id_item=input("Masukkan ID: ")
-            if id_item[0]=='C':
-                add_data_consumable(id_item,consumable)
-            elif id_item[0]=='G':
-                add_data_gadget(id_item,gadget)
-    '''
+        #Validasi admin
+        id_item=input("Masukkan ID: ")
+        if id_item[0]=='C':
+            add_data_consumable(id_item,consumable)
+        elif id_item[0]=='G':
+            add_data_gadget(id_item,gadget)
     #F06 - Menghapus Item
     if pilihan=='hapusitem':
         #Validasi Admin
