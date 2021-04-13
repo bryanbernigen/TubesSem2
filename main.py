@@ -75,6 +75,12 @@ while login==True:
             print("ID tidak cocok")
     #F07 - Mengubah jumlah pada inventory
     #F08 - Meminjam Gadget
+    if pilihan=='pinjam':
+        #Validasi User
+        #sementera ID digenerate. Nantinya id merupakan current_id
+        id=1
+        #tulisan pada fungsi dibawah ini ada yang salah (yang dipinjam gadget yang ditulis malah consumable)
+        add_data_gadget_borrow_history(id,gadget,gadget_borrow_history)
     #F09 - Menegmbalikan Gadget
     #F10 - Meminta Consumable
     #F11 - Melihat Riwayat Peminjaman Gadget
