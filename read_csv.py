@@ -529,6 +529,7 @@ def read_gadget_return_history(nama_file,path_ralatif_terhadap_sekarang):
     #Konversi Bentuk dalam Array
     conv_to_int(data_csv,0)
     conv_to_int(data_csv,1)
+    conv_to_int(data_csv,4)
 
 
     #HASIL
