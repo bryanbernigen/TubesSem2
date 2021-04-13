@@ -55,6 +55,7 @@ while login==True:
     #F04 - Pencarian Gadget Berdasarkan Tahun
     #F05 - Menambah Item
     if pilihan == "tambahitem":
+        #Validasi Admin
         cek = 0 #untuk mengecek apakah id_item sudah ada
         id_item = input("Masukkan ID: ")
 
@@ -89,6 +90,15 @@ while login==True:
         else:
             print("ID tidak cocok")
     #F07 - Mengubah jumlah pada inventory
+    if pilihan == "ubahjumlah":
+        #Validasi Admin
+        id_item_yang_akan_diubah = input("Masukan ID: ")
+        if id_item_yang_akan_diubah[0]=='G':
+            ubah_jumlah_gadget(id_item_yang_akan_diubah, gadget)
+        elif id_item_yang_akan_diubah[0]=='C':
+            ubah_jumlah_consumable(id_item_yang_akan_diubah, consumable)
+        else:
+            print("Tidak ada item dengan ID tersebut!")
     #F08 - Meminjam Gadget
     if pilihan=='pinjam':
         #Validasi User
