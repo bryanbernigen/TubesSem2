@@ -79,7 +79,12 @@ while login==True:
         id=1
         #tulisan pada fungsi dibawah ini ada yang salah (yang dipinjam gadget yang ditulis malah consumable)
         add_data_gadget_borrow_history(id,gadget,gadget_borrow_history)
-    #F09 - Menegmbalikan Gadget
+    #F09 - Mengembalikan Gadget
+    if pilihan=='kembalikan':
+        #Validasi User
+        #Sementara ID digenerate otomatis. Nantinya merupakan curret_id
+        id=1
+        add_data_gadget_return_history(id,gadget,gadget_borrow_history,gadget_return_history)
     #F10 - Meminta Consumable
     if pilihan=='minta':
         #Validasi user
