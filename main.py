@@ -8,8 +8,9 @@ selama fungsi login belum jadi, cara keluar program adalah control + "c"
 #import modul yang dibuat
 from read_csv import load
 from add_data import add_data_user,add_data_gadget,add_data_consumable
+from write_csv import save
 import argparse
-import os
+import os,time
 
 #inisialisasi Data (Loading Data dari CSV)
 parser = argparse.ArgumentParser()
@@ -70,5 +71,14 @@ while login==True:
     #F13 - Melihat Riwayat Pengambilan Consumable
     #F14 - Load Data
     #F15 - Save Data
+    if pilihan=='save':
+        os.system("cls")
+        path=input("Masukkan Folder tempat file akan di save: ")
+        print("Saving....")
+        save(path,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history)
+        time.sleep(3)
+        print("Saved")
+        time.sleep(1)
+
     #F16 - Help
     #F17 - Exit
