@@ -1,9 +1,30 @@
+#README
+'''
+buka file dengan cara mengetikan:
+    python main.py "folder_yang_berisi_data_csv"
+selama fungsi login belum jadi, cara keluar program adalah control + "c"
+'''
+
 #import modul yang dibuat
 from read_csv import load
 from add_data import add_data_user,add_data_gadget,add_data_consumable
+import argparse
+import os
 
-#inisialisasi Data (Loading Data dati CSV)
-data=load("csv_datas")
+#inisialisasi Data (Loading Data dari CSV)
+parser = argparse.ArgumentParser()
+parser.add_argument("folder_location", help="Location of the folder that contains all the data.",nargs='?', const='')
+args = parser.parse_args()
+if args.folder_location is None:
+    print("Tidak ada folder yang dimasukkan")
+    exit()
+current_path=os.getcwd()
+new_path=os.path.join(current_path,args.folder_location)
+if os.path.exists(new_path):
+    data=load(args.folder_location)
+else:
+    print("Folder tidak ada")
+    exit()
 loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history=data
 
 #Algoritma Program
