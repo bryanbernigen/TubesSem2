@@ -7,7 +7,7 @@ selama fungsi login belum jadi, cara keluar program adalah control + "c"
 
 #import modul yang dibuat
 from read_csv import load
-from add_data import add_data_user,add_data_gadget,add_data_consumable
+from add_data import *
 from write_csv import save
 import argparse
 import os,time
@@ -42,11 +42,13 @@ login=True
 
 #Fungsi Total
 while login==True:
+    os.system("cls")
     pilihan=input("Masukkan Pilihan Menu: ")
 
     #Masukkan Fungsi-Fungsi Yang Sudah dibuat disini (F01-F17)
     #F01 - Register
     if pilihan=='register':
+        #validasi admin
         add_data_user(user)
     #F02 - Login
     #F03 - Pencarian Gadget Berdasarkan Rarity
@@ -62,6 +64,15 @@ while login==True:
                 add_data_gadget(id_item,gadget)
     '''
     #F06 - Menghapus Item
+    if pilihan=='hapusitem':
+        #Validasi Admin
+        id_item_yang_akan_dihapus=input("Masukkan ID item yang akan dihapus : ")
+        if id_item_yang_akan_dihapus[0]=='G':
+            delete_gadget(id_item_yang_akan_dihapus,gadget)
+        elif id_item_yang_akan_dihapus[0]=='C':
+            delete_consumable(id_item_yang_akan_dihapus,consumable)
+        else:
+            print("ID tidak cocok")
     #F07 - Mengubah jumlah pada inventory
     #F08 - Meminjam Gadget
     #F09 - Menegmbalikan Gadget
@@ -79,6 +90,5 @@ while login==True:
         time.sleep(3)
         print("Saved")
         time.sleep(1)
-
     #F16 - Help
     #F17 - Exit
