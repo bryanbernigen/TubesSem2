@@ -54,29 +54,30 @@ while login==True:
     #F03 - Pencarian Gadget Berdasarkan Rarity
     #F04 - Pencarian Gadget Berdasarkan Tahun
     #F05 - Menambah Item
-    cek = 0 #untuk mengecek apakah id_item sudah ada
-    id_item = input("Masukkan ID: ")
+    if pilihan == "tambahitem":
+        cek = 0 #untuk mengecek apakah id_item sudah ada
+        id_item = input("Masukkan ID: ")
 
-    if id_item[0] == 'G':
-        for i in range(1,3):
-            if gadget[i][0] == id_item:
-                cek += 1
-        if cek > 0:
-            print("Gagal menambahkan item karena ID sudah ada.")
-        else: #cek == 0 atau id_item belum ada
-            add_data_gadget(id_item,gadget)
+        if id_item[0] == 'G':
+            for i in range(1,len(gadget)):
+                if gadget[i][0] == id_item:
+                    cek += 1
+            if cek > 0:
+                print("Gagal menambahkan item karena ID sudah ada.")
+            else: #cek == 0 atau id_item belum ada
+                add_data_gadget(id_item,gadget)
 
-    elif id_item[0] == 'C':
-        for i in range(1,3):
-            if gadget[i][0] == id_item:
-                cek += 1
-        if cek > 0:
-            print("Gagal menambahkan item karena ID sudah ada.")
-        else: #cek == 0 atau id_item belum ada
-            add_data_consumable(id_item,consumable)
+        elif id_item[0] == 'C':
+            for i in range(1,len(consumable)):
+                if gadget[i][0] == id_item:
+                    cek += 1
+            if cek > 0:
+                print("Gagal menambahkan item karena ID sudah ada.")
+            else: #cek == 0 atau id_item belum ada
+                add_data_consumable(id_item,consumable)
 
-    else:
-        print("Gagal menambahkan item karena ID tidak valid")
+        else:
+            print("Gagal menambahkan item karena ID tidak valid")
     #F06 - Menghapus Item
     if pilihan=='hapusitem':
         #Validasi Admin
