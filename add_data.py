@@ -967,7 +967,8 @@ def gacha(id_user,consumable,consumable_history):
             list_dummy.append(jumlah_item)
 
             #memperbaharui consumable history
-            consumable_history.append(list_sementara)
+            for j in range(len(list_sementara)):
+                consumable_history.append(list_sementara[j])
             consumable_history.append(list_dummy)
             print(consumable_history)
             print("Selamat, Anda Mendapatkan {} {} dengan rarity {}".format(jumlah_item,list_gachaable[angka_gacha][1],rarity))
