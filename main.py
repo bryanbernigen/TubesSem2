@@ -52,7 +52,10 @@ while login==True:
         add_data_user(user)
     #F02 - Login
     #F03 - Pencarian Gadget Berdasarkan Rarity
+    if pilihan == "carirarity"
+
     #F04 - Pencarian Gadget Berdasarkan Tahun
+
     #F05 - Menambah Item
     if pilihan == "tambahitem":
         #Validasi Admin
