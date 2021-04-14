@@ -585,23 +585,23 @@ def add_data_gadget_borrow_history(id_pengambil,gadget,gadget_history):
         print("Jumlah           : ")
         print("Tanggal          : ")
         print("")
-        id_gadget=input("Masukkan ID consumbale yang akan di ambil : ")
+        id_gadget=input("Masukkan ID gadget yang akan di ambil : ")
         for j in range(len(gadget)):
             if id_gadget==gadget[j][0]:
+                nomor_gadget=j
                 j=len(gadget)-1 #agar langsung keluar loop for j
                 os.system("cls")
-                print("ID               : ",gadget[j][0])
-                print("Nama             : ",gadget[j][1])
-                print("Deskripsi        : ",gadget[j][2])
-                print("Jumlah           : ",gadget[j][3])
-                print("Rarity           : ",gadget[j][4])
-                print("Tahun Ditemukan  : ",gadget[j][5])
+                print("ID               : ",gadget[nomor_gadget][0])
+                print("Nama             : ",gadget[nomor_gadget][1])
+                print("Deskripsi        : ",gadget[nomor_gadget][2])
+                print("Jumlah           : ",gadget[nomor_gadget][3])
+                print("Rarity           : ",gadget[nomor_gadget][4])
+                print("Tahun Ditemukan  : ",gadget[nomor_gadget][5])
                 print("")
                 valisdasi=input("Apakah Anda akan mengambil gadget tersebut? (y/n) : ")
                 if valisdasi=='y':
                     os.system("cls")
-                    nomor_gadget=j
-                    nama_gadget=gadget[j][1]
+                    nama_gadget=gadget[nomor_gadget][1]
                     stage+=1
                 else:
                     os.system("cls")
