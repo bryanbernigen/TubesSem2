@@ -6,6 +6,14 @@ def caritahun(gadget):
     print ('hasil pencarian :')
 
     for i in range (len(gadget)):
-        if y== ">":
-            j= gadget []
-            print (gadget [0] + ':'+)
+        if y== ">=":
+            if  gadget[i][5]>= x :
+                for j in range (5):
+                    print (gadget[0]+":"+gadget[j+1])         
+            else:
+                print ("Tidak ada gadget yang ditemukan")
+        elif y=="=":
+            print (gadget[0]+':'+gadget[i])
+        elif y== "<=":
+            
+
