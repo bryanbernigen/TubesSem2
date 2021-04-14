@@ -8,7 +8,7 @@ def carirarity (gadget):
     print('Hasil pencarian :')
     for i in range (len(gadget)):
         if (gadget[i][4]) == inputRarity :
-            return (print (gadget[i]))
+            return (print (gadget[0] +':'+ gadget[i]))
         else :
             return (print('Data belum tersedia'))
 
