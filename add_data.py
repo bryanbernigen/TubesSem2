@@ -934,6 +934,20 @@ def gacha(id_user,consumable,consumable_history):
                     total+=list_gacha[j][2]*4
             #Rata-rata rarity
             angka_rarity=round(total/total_item)
+
+            #Kesempatan menaikan rarity
+            chance=time.time()
+            if chance%100<70:
+                chance=0
+            elif chance%100<90:
+                chance=1
+            elif chance%100<99:
+                chance=2
+            else:
+                chance=3
+            
+            #hasil rarity
+            angka_rarity+=chance
             if angka_rarity==1:
                 rarity='C'
             elif angka_rarity==2:
@@ -970,9 +984,8 @@ def gacha(id_user,consumable,consumable_history):
             for j in range(len(list_sementara)):
                 consumable_history.append(list_sementara[j])
             consumable_history.append(list_dummy)
-            print(consumable_history)
             print("Selamat, Anda Mendapatkan {} {} dengan rarity {}".format(jumlah_item,list_gachaable[angka_gacha][1],rarity))
-            time.sleep(1)
+            time.sleep(3)
         else:
             return
         
