@@ -52,8 +52,8 @@ while login==True:
         add_data_user(user)
     #F02 - Login
     #F03 - Pencarian Gadget Berdasarkan Rarity
-    if pilihan == "carirarity"
-
+    if pilihan == "carirarity":
+        print("Tolong kalo belom selesai trus mau ditinggal jangan di commit dulu ntar malah jadi error")
     #F04 - Pencarian Gadget Berdasarkan Tahun
 
     #F05 - Menambah Item
@@ -134,6 +134,8 @@ while login==True:
         time.sleep(3)
         print("Saved")
         time.sleep(1)
+        data=load(path)
+        loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history=data
     #F16 - Help
     #F17 - Exit
     #FB03 - Gacha
