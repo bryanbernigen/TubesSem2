@@ -9,6 +9,7 @@ selama fungsi login belum jadi, cara keluar program adalah control + "c"
 from read_csv import load
 from add_data import *
 from write_csv import save
+from interface import *
 import argparse
 import os,time
 
@@ -30,7 +31,7 @@ loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_re
 
 #Algoritma Program
 #User diminta untuk login
-current_user=input("Masukkan Username :")
+current_user=input("Masukkan Username: ")
 current_password=input("Masukkan Password: ")
 
 #Masukkan Fungsi Login disini
@@ -129,11 +130,12 @@ while login==True:
     if pilihan=='save':
         os.system("cls")
         path=input("Masukkan Folder tempat file akan di save: ")
-        print("Saving....")
         save(path,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history)
-        time.sleep(3)
-        print("Saved")
-        time.sleep(1)
+        r=50
+        for i in range (r):
+            progressBar(i, r)
+            time.sleep(.02)
+        time.sleep(1.5)
         data=load(path)
         loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history=data
     #F16 - Help
