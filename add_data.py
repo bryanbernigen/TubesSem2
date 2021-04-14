@@ -10,6 +10,7 @@
             catatan: jika nama_file == nama_file_yang_akan_deperbaharui maka data di nama_file akan tertimpa oleh data baru
 '''
 import os
+import time
 from hashing import hashing
 
 # Fungsi akan menambah data dengan jumlah kolom yang sama dengan data acuan;
@@ -827,6 +828,153 @@ def ubah_jumlah_consumable(id_item_yang_akan_diubah,consumable):
         else:
             consumable[baris_consumable][3] = consumable[baris_consumable][3] + jumlah
             print(jumlah, consumable[baris_consumable][1], "berhasil ditambahkan. Stok sekarang:", consumable[baris_consumable][3])
+
+def gacha(id_user,consumable,consumable_history):
+    #Membuat list apa saja yang pernah di ambil user
+    list_consumable_user_all=[]
+    for j in range(len(consumable_history)):
+        list_dummy=[]
+        if consumable_history[j][1]==id_user:
+            added=False
+            for i in range(len(list_consumable_user_all)):
+                if consumable_history[j][2]==list_consumable_user_all[i][0]:
+                    list_consumable_user_all[i][2]+=consumable_history[j][4]
+                    added=True
+            if not added:
+                list_dummy.append(consumable_history[j][2])
+                for jj in range(len(consumable)):
+                    if consumable[jj][0]==consumable_history[j][2]:
+                        list_dummy.append(consumable[jj][1])
+                        baris_benda=jj
+                list_dummy.append(consumable_history[j][4])
+                list_dummy.append(consumable[baris_benda][4])
+                list_consumable_user_all.append(list_dummy)
+
+
+    #Menanyakan apa saja yang mau digunakan untuk gacha
+    list_gacha=[]
+    list_sementara=[]
+    list_dummy=[]
+    lagi=True
+    while lagi:
+        #Mencetak Consumable apa saja yang diambil user tersebut
+        print(f"{'NO':<5} {'ID':<5} {'Nama Consumable':<30} {'Jumlah':<10} {'Rarity':<10}")
+        for j in range(len(list_consumable_user_all)):
+            print("{:<5} {:<5} {:<30} {:<10} {:<10}".format(j+1,list_consumable_user_all[j][0],list_consumable_user_all[j][1],list_consumable_user_all[j][2],list_consumable_user_all[j][3]))
+        id_consumable_yang_akan_digacha=input("Masukkan ID Consumable yang akan digacha : ")
+        found=False
+        for j in range(len(list_consumable_user_all)):
+            if id_consumable_yang_akan_digacha==list_consumable_user_all[j][0]:
+                found=True
+                jumlah_yang_akan_digacha=int(input("Masukkan Banyak consumable yang akan digacha : "))
+                if jumlah_yang_akan_digacha>list_consumable_user_all[j][2]:
+                    print("Jumlah consumable yang akan digacha melebihi jumlah consumable yang dimiliki")
+                else:
+                    list_consumable_user_all[j][2]-=jumlah_yang_akan_digacha
+                    nama_consumable_yang_akan_digacha=list_consumable_user_all[j][1]
+                    rarity=list_consumable_user_all[j][3]
+                    tanggal="gacha"
+                    list_dummy.append(id_consumable_yang_akan_digacha)
+                    list_dummy.append(nama_consumable_yang_akan_digacha)
+                    list_dummy.append(jumlah_yang_akan_digacha)
+                    list_dummy.append(rarity)
+                    list_gacha.append(list_dummy)
+                    list_dummy=[]
+                    list_dummy.append(len(consumable_history))
+                    list_dummy.append(id_user)
+                    list_dummy.append(id_consumable_yang_akan_digacha)
+                    list_dummy.append(tanggal)
+                    list_dummy.append(jumlah_yang_akan_digacha*-1)
+                    list_sementara.append(list_dummy)
+                    list_dummy=[]
+        if not found:
+            again=input("Consumabale tidak terdaftar, apakah anda ingin coba lagi? (y/n) : ")
+            if again!='y':
+                os.system("cls")
+                lagi=False
+            else:
+                os.system("cls")
+        else:
+            print(list_sementara)
+            again=input("Apakah Anda akan menambahkan consumable lain? (y/n) : ")
+            if again!='y':
+                os.system("cls")
+                lagi=False
+            else:
+                os.system("cls")
+    if list_gacha==[]:
+        print("Tidak ada consumable yang akan di gacha")
+        time.sleep(1)
+        return
+    else:
+        print(f"{'NO':<5} {'ID':<5} {'Nama Consumable':<30} {'Jumlah':<10} {'Rarity':<10}")
+        for j in range(len(list_gacha)):
+            print("{:<5} {:<5} {:<30} {:<10} {:<10}".format(j+1,list_gacha[j][0],list_gacha[j][1],list_gacha[j][2],list_gacha[j][3]))
+        validasi=input("Apakah Anda akan menggacha consumable tersebut? (y/n) : " )
+        if validasi=='y':
+            #Proses Gacha
+            print("Sedang Menggacha")
+            time.sleep(3)
+            os.system("cls")
+            
+            #Mengenerate sebuah angka dari jumlah dan rarity yang digacha
+            total=0
+            total_item=0
+            for j in range(len(list_gacha)):
+                if list_gacha[j][3]=='C':
+                    total+=list_gacha[j][2]*1
+                    total_item+=list_gacha[j][2]
+                elif list_gacha[j][3]=='B':
+                    total+=list_gacha[j][2]*2
+                    total_item+=list_gacha[j][2]
+                elif list_gacha[j][3]=='A':
+                    total+=list_gacha[j][2]*3
+                    total_item+=list_gacha[j][2]
+                else:
+                    total+=list_gacha[j][2]*4
+            #Rata-rata rarity
+            angka_rarity=round(total/total_item)
+            if angka_rarity==1:
+                rarity='C'
+            elif angka_rarity==2:
+                rarity='B'
+            elif angka_rarity==3:
+                rarity='A'
+            else:
+                rarity='S'
+            #Jumlah Item
+            jumlah_item=round(total_item/len(list_gacha))
+            if jumlah_item<=0:
+                jumlah_item=1
+            
+            #list item yang dapat digacha
+            list_gachaable=[]
+            list_dummy=[]
+            for j in range(len(consumable)):
+                if consumable[j][4]==rarity:
+                    list_dummy.append(consumable[j][0])
+                    list_dummy.append(consumable[j][1])
+                    list_gachaable.append(list_dummy)
+                    list_dummy=[]
+            
+            #hasil gachanya
+            angka_gacha=total%len(list_gachaable)
+            list_dummy=[]
+            list_dummy.append(len(consumable_history))
+            list_dummy.append(id_user)
+            list_dummy.append(list_gachaable[angka_gacha][0])
+            list_dummy.append('gacha')
+            list_dummy.append(jumlah_item)
+
+            #memperbaharui consumable history
+            consumable_history.append(list_sementara)
+            consumable_history.append(list_dummy)
+            print(consumable_history)
+            print("Selamat, Anda Mendapatkan {} {} dengan rarity {}".format(jumlah_item,list_gachaable[angka_gacha][1],rarity))
+            time.sleep(1)
+        else:
+            return
+        
 
 #Contoh Penggunaan
 '''
