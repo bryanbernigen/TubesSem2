@@ -133,3 +133,9 @@ while login==True:
         time.sleep(1)
     #F16 - Help
     #F17 - Exit
+    #FB03 - Gacha
+    if pilihan=='gacha':
+        #Validasi User
+        #Sementara id digenerate otomatis. Nantinya current id
+        id=1
+        gacha(id,consumable,consumable_history)
