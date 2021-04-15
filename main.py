@@ -37,7 +37,6 @@ while not valid:
     valid,curret_id,curret_role=login(user)
 
 while valid:
-    os.system("cls")
     pilihan=input("Masukkan Pilihan Menu: ")
 
     #Masukkan Fungsi-Fungsi Yang Sudah dibuat disini (F01-F17)
@@ -48,7 +47,22 @@ while valid:
     #F02 - Login
     #F03 - Pencarian Gadget Berdasarkan Rarity
     if pilihan == "carirarity":
-        print("Tolong kalo belom selesai trus mau ditinggal jangan di commit dulu ntar malah jadi error")
+        rarity=input("Masukkan rarity yang akan dicari: ")
+        if rarity=='S' or rarity=='A' or rarity=='B' or rarity=='C':
+            found=False
+            for j in range(len(gadget)):
+                if rarity==gadget[j][4]:
+                    found=True
+                    print("Nama Gadget      : ",gadget[j][1])
+                    print("Deskripsi        : ",gadget[j][2])
+                    print("Jumlah           : ",gadget[j][3])
+                    print("Rarity           : ",gadget[j][4])
+                    print("Tahun Ditemukan  : ",gadget[j][5])
+                    print("")
+            if not found:
+                print("Tidak ada gadget dengan rarity tersebut")
+        else:
+            print("Rarity tidak valid")
     #F04 - Pencarian Gadget Berdasarkan Tahun
 
     #F05 - Menambah Item
