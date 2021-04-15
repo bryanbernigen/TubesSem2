@@ -39,6 +39,10 @@ def see_gadget_return_history(user,gadget,gadget_return_history):
     #mengembalikan tanggal ke bentuk string
     for j in range(len(list_terurut)):
         list_terurut[j][3]=str(list_terurut[j][3])
+        panjang_tanggal=len(list_terurut[j][3])
+        while panjang_tanggal<8:
+            list_terurut[j][3]='0'+list_terurut[j][3]
+            panjang_tanggal=len(list_terurut[j][3])
         tanggal_str=''
         tanggal_str+=list_terurut[j][3][6]+list_terurut[j][3][7]+'/'
         tanggal_str+=list_terurut[j][3][4]+list_terurut[j][3][5]+'/'
