@@ -10,6 +10,7 @@ from read_csv import load
 from add_data import *
 from write_csv import save
 from login import login
+from caritahun import cari_tahun
 from interface import *
 import argparse
 import os,time
@@ -64,7 +65,8 @@ while valid:
         else:
             print("Rarity tidak valid")
     #F04 - Pencarian Gadget Berdasarkan Tahun
-
+    if pilihan=='caritahun':
+        cari_tahun(gadget)
     #F05 - Menambah Item
     if pilihan == "tambahitem":
         #Validasi Admin
