@@ -11,7 +11,7 @@ from add_data import *
 from write_csv import save
 from login import login
 from caritahun import cari_tahun
-from see_history import see_gadget_return_history
+from see_history import see_gadget_return_history,see_consumable_history
 from interface import *
 import argparse
 import os,time
@@ -141,6 +141,11 @@ while valid:
         else:
             print("Fungsi Hanya diperbolehkan untuk Admin")
     #F13 - Melihat Riwayat Pengambilan Consumable
+    if pilihan=='riwayatambil':
+        if curret_role=='admin':
+            see_consumable_history(user,consumable,consumable_history)
+        else:
+            print("Fungsi Hanya diperbolehkan untuk Admin")
     #F14 - Load Data
     #F15 - Save Data
     if pilihan=='save':
