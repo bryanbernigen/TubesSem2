@@ -1,16 +1,29 @@
-from read_csv import read_user
+import os
+import time
+from hashing import hashing
 
-def login():
-    user = read_user("user.csv","csv_datas")
+def login(user):
+    global valid
+    #Ini Kalo Bisa ditambah sesuatu kaya halo selamat datang, trus gambar doraemon pake garis"
     username = input("Masukan username: ")
     password = input("Masukan password: ")
+    password=hashing(password,username)
     valid = False
     for i in range(len(user)):
-            if (user[i][1]) == username and (user[i][4]) == password:
-                valid = True
-                break
+        if (user[i][1]) == username and (user[i][4]) == password:
+            baris_user=i
+            valid = True
+            break
     if valid:
+        global curret_id
+        global curret_role
+        os.system("cls")
         print("Halo",username,"! Selamat datang di Kantong Ajaib")
+        time.sleep(2)
+        curret_id=user[baris_user][0]
+        curret_role=user[baris_user][5]
+        return True,curret_id,curret_role
     else:
+        os.system("cls")
         print("username dan password tidak cocok atau akunmu belum terdaftar")
-login()
+        return False,'',''

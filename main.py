@@ -9,6 +9,7 @@ selama fungsi login belum jadi, cara keluar program adalah control + "c"
 from read_csv import load
 from add_data import *
 from write_csv import save
+from login import login
 from interface import *
 import argparse
 import os,time
@@ -31,18 +32,11 @@ loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_re
 
 #Algoritma Program
 #User diminta untuk login
-current_user=input("Masukkan Username: ")
-current_password=input("Masukkan Password: ")
+valid=False
+while not valid:
+    valid,curret_id,curret_role=login(user)
 
-#Masukkan Fungsi Login disini
-    #Fungsi Login harus bisa mengembalikan current_id (id dari user saat ini di user.csv) 
-    #Fungsi Login harus bisa mengembalikan current_role (role dari user saat ini di user.csv) 
-    #Fungsi Login Harus bisa mengembalikan login=True atau False (jika sudah hapusa baris dibawah comment ini (yang login=True))
-login=True
-
-
-#Fungsi Total
-while login==True:
+while valid:
     os.system("cls")
     pilihan=input("Masukkan Pilihan Menu: ")
 
