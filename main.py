@@ -44,9 +44,12 @@ while valid:
     #Masukkan Fungsi-Fungsi Yang Sudah dibuat disini (F01-F17)
     #F01 - Register
     if pilihan=='register':
-        #validasi admin
-        add_data_user(user)
+        if curret_role=='admin':
+            add_data_user(user)
+        else:
+            print("Fungsi Hanya diperbolehkan untuk Admin")
     #F02 - Login
+        #Sudah di atas
     #F03 - Pencarian Gadget Berdasarkan Rarity
     if pilihan == "carirarity":
         rarity=input("Masukkan rarity yang akan dicari: ")
@@ -70,69 +73,74 @@ while valid:
         cari_tahun(gadget)
     #F05 - Menambah Item
     if pilihan == "tambahitem":
-        #Validasi Admin
-        cek = 0 #untuk mengecek apakah id_item sudah ada
-        id_item = input("Masukkan ID: ")
+        if curret_role=='admin':
+            cek = 0 #untuk mengecek apakah id_item sudah ada
+            id_item = input("Masukkan ID: ")
 
-        if id_item[0] == 'G':
-            for i in range(1,len(gadget)):
-                if gadget[i][0] == id_item:
-                    cek += 1
-            if cek > 0:
-                print("Gagal menambahkan item karena ID sudah ada.")
-            else: #cek == 0 atau id_item belum ada
-                add_data_gadget(id_item,gadget)
+            if id_item[0] == 'G':
+                for i in range(1,len(gadget)):
+                    if gadget[i][0] == id_item:
+                        cek += 1
+                if cek > 0:
+                    print("Gagal menambahkan item karena ID sudah ada.")
+                else: #cek == 0 atau id_item belum ada
+                    add_data_gadget(id_item,gadget)
 
-        elif id_item[0] == 'C':
-            for i in range(1,len(consumable)):
-                if gadget[i][0] == id_item:
-                    cek += 1
-            if cek > 0:
-                print("Gagal menambahkan item karena ID sudah ada.")
-            else: #cek == 0 atau id_item belum ada
-                add_data_consumable(id_item,consumable)
+            elif id_item[0] == 'C':
+                for i in range(1,len(consumable)):
+                    if gadget[i][0] == id_item:
+                        cek += 1
+                if cek > 0:
+                    print("Gagal menambahkan item karena ID sudah ada.")
+                else: #cek == 0 atau id_item belum ada
+                    add_data_consumable(id_item,consumable)
 
+            else:
+                print("Gagal menambahkan item karena ID tidak valid")
         else:
-            print("Gagal menambahkan item karena ID tidak valid")
+            print("Fungsi Hanya diperbolehkan untuk Admin")
     #F06 - Menghapus Item
     if pilihan=='hapusitem':
-        #Validasi Admin
-        id_item_yang_akan_dihapus=input("Masukkan ID item yang akan dihapus : ")
-        if id_item_yang_akan_dihapus[0]=='G':
-            delete_gadget(id_item_yang_akan_dihapus,gadget)
-        elif id_item_yang_akan_dihapus[0]=='C':
-            delete_consumable(id_item_yang_akan_dihapus,consumable)
+        if curret_role=='admin':
+            id_item_yang_akan_dihapus=input("Masukkan ID item yang akan dihapus : ")
+            if id_item_yang_akan_dihapus[0]=='G':
+                delete_gadget(id_item_yang_akan_dihapus,gadget)
+            elif id_item_yang_akan_dihapus[0]=='C':
+                delete_consumable(id_item_yang_akan_dihapus,consumable)
+            else:
+                print("ID tidak cocok")
         else:
-            print("ID tidak cocok")
+            print("Fungsi Hanya diperbolehkan untuk Admin")
     #F07 - Mengubah jumlah pada inventory
     if pilihan == "ubahjumlah":
-        #Validasi Admin
-        id_item_yang_akan_diubah = input("Masukan ID: ")
-        if id_item_yang_akan_diubah[0]=='G':
-            ubah_jumlah_gadget(id_item_yang_akan_diubah, gadget)
-        elif id_item_yang_akan_diubah[0]=='C':
-            ubah_jumlah_consumable(id_item_yang_akan_diubah, consumable)
+        if curret_role=='admin':
+            id_item_yang_akan_diubah = input("Masukan ID: ")
+            if id_item_yang_akan_diubah[0]=='G':
+                ubah_jumlah_gadget(id_item_yang_akan_diubah, gadget)
+            elif id_item_yang_akan_diubah[0]=='C':
+                ubah_jumlah_consumable(id_item_yang_akan_diubah, consumable)
+            else:
+                print("Tidak ada item dengan ID tersebut!")
         else:
-            print("Tidak ada item dengan ID tersebut!")
+            print("Fungsi Hanya diperbolehkan untuk Admin")
     #F08 - Meminjam Gadget
     if pilihan=='pinjam':
-        #Validasi User
-        #sementera ID digenerate. Nantinya id merupakan current_id
-        id=1
-        #tulisan pada fungsi dibawah ini ada yang salah (yang dipinjam gadget yang ditulis malah consumable)
-        add_data_gadget_borrow_history(id,gadget,gadget_borrow_history)
+        if curret_role=='user':
+            add_data_gadget_borrow_history(curret_id,gadget,gadget_borrow_history)
+        else:
+            print("Fungsi Hanya diperbolehkan untuk User")
     #F09 - Mengembalikan Gadget
     if pilihan=='kembalikan':
-        #Validasi User
-        #Sementara ID digenerate otomatis. Nantinya merupakan curret_id
-        id=1
-        add_data_gadget_return_history(id,gadget,gadget_borrow_history,gadget_return_history)
+        if curret_role=='user':
+            add_data_gadget_return_history(id,gadget,gadget_borrow_history,gadget_return_history)
+        else:
+            print("Fungsi Hanya diperbolehkan untuk User")
     #F10 - Meminta Consumable
     if pilihan=='minta':
-        #Validasi user
-        #sementara id digenerate. Nantinya merupakan current_user
-        id=1
-        add_data_consumable_history(id,consumable,consumable_history)
+        if curret_role=='user':
+            add_data_consumable_history(id,consumable,consumable_history)
+        else:
+            print("Fungsi Hanya diperbolehkan untuk user")
     #F11 - Melihat Riwayat Peminjaman Gadget
     #F12 - Melihat Riwayat Pengembalian Gadget
     if pilihan=='riwayatkembali':
@@ -147,6 +155,7 @@ while valid:
         else:
             print("Fungsi Hanya diperbolehkan untuk Admin")
     #F14 - Load Data
+        #Sudah pada baigan awal bersama dengan argparse
     #F15 - Save Data
     if pilihan=='save':
         os.system("cls")
@@ -161,6 +170,10 @@ while valid:
         loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history=data
     #F16 - Help
     #F17 - Exit
+    #FB01 - Hashing
+        #Done pada hashing.py
+    #FB02 - Mengembalikan Gadget Secara Parsial
+        #Done
     #FB03 - Gacha
     if pilihan=='gacha':
         #Validasi User
