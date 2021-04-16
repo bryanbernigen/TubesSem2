@@ -1,6 +1,6 @@
 import os
 
-def see_gadget_borrow_history(user,consumable,gadget_borrow_history):
+def see_gadget_borrow_history(user,gadget,gadget_borrow_history):
     
     #Membuat array dengan id transaksi, user, item, tanggal (dalam integer)
     list_full=[]
@@ -12,9 +12,9 @@ def see_gadget_borrow_history(user,consumable,gadget_borrow_history):
                 if gadget_borrow_history[j][1]==user[jj][0]:
                     list_dummy.append(user[jj][1])
                     break
-            for jj in range(len(consumable)):
-                if gadget_borrow_history[j][2]==consumable[jj][0]:
-                    list_dummy.append(consumable[jj][1])
+            for jj in range(len(gadget)):
+                if gadget_borrow_history[j][2]==gadget[jj][0]:
+                    list_dummy.append(gadget[jj][1])
                     break
             #membuat tanggal menjadi sebuah integer
             tanggal_int=''
