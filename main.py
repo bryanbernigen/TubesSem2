@@ -132,7 +132,7 @@ while valid:
     #F09 - Mengembalikan Gadget
     if pilihan=='kembalikan':
         if curret_role=='user':
-            add_data_gadget_return_history(id,gadget,gadget_borrow_history,gadget_return_history)
+            add_data_gadget_return_history(curret_id,gadget,gadget_borrow_history,gadget_return_history)
         else:
             print("Fungsi Hanya diperbolehkan untuk User")
     #F10 - Meminta Consumable

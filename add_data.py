@@ -685,9 +685,10 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
                     added=True
             if not added:
                 list_dummy.append(gadget_borrow_history[j][2])
-                for jj in range(len(gadget)):
-                    if gadget[jj][0]==gadget_borrow_history[j][2]:
-                        list_dummy.append(gadget[jj][1])
+                for jj in range(len(gadget_return_history)):
+                    if gadget_return_history[jj][2]==gadget_borrow_history[j][2]:
+                        list_dummy.append(gadget_return_history[jj][5])
+                        break
                 list_dummy.append(gadget_borrow_history[j][4])
                 list_gadget_user_all.append(list_dummy)
     
@@ -736,12 +737,29 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
     print("Anda akan mengembalikan Gagdet sesuai data tersebut")
     verivikasi_akhir=input("Apakah sudah benar? (y/n) : ")
     if verivikasi_akhir=='y':
+        #menambah jumlah gadget di csv gadget
+        new_gadget=True
+        for j in range(len(gadget)): #jika gadget sudah ada, tinggal mengubah jumlah
+            if gadget[j][0]==id_gadget_yang_akan_dikembalikan:
+                gadget[j][3]+=jumlah_yang_akan_dikembalikan
+                new_gadget=False
+        if new_gadget: #kalau gadget baru, maka akan dibuat baris gadget baru
+            list_dummy=[]
+            list_dummy.append(id_gadget_yang_akan_dikembalikan)
+            list_dummy.append(nama_gadget_yang_akan_dikembalikan)
+            list_dummy.append("dikembalikan setelah dihapus admin")
+            list_dummy.append(jumlah_yang_akan_dikembalikan)
+            list_dummy.append("S")
+            list_dummy.append(0)
+            gadget.append(list_dummy)
+        #menambah return history
         list_dummy=[]
         list_dummy.append(len(gadget_return_history))
         list_dummy.append(id_pengembali)
         list_dummy.append(id_gadget_yang_akan_dikembalikan)
         list_dummy.append(tanggal)
         list_dummy.append(jumlah_yang_akan_dikembalikan)
+        list_dummy.append(nama_gadget_yang_akan_dikembalikan)
         gadget_return_history.append(list_dummy)
 
 def delete_gadget(id_gadget_yang_akan_dihapus,gadget):
