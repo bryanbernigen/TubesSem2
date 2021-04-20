@@ -172,7 +172,37 @@ while valid:
         data=load(path)
         loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history=data
     #F16 - Help
+    if pilihan == 'help':
+        print("============= HELP ============="
+              "\nregister - untuk melakukan registrasi user baru"
+              "\nlogin - untuk melakukan login ke dalam sistem"
+              "\ncarirarity - untuk mencari gadget dengan rarity tertentu"
+              "\ncaritahun - untuk mencari gadget berdasarkan tahun ditemukan"
+              )
+        if curret_role=='admin':
+            print("tambahitem - untuk menambahkan item ke dalam inventori"
+                  "\nhapusitem - untuk menghapus suatu item pada database"
+                  "\nubahjumlah - untuk mengubah jumlah gadget dan consumable dalam sistem"
+                  "\nriwayatkembali - untuk melihat riwayat pengembalian gadget"
+                  "\nriwayatambil - untuk melihat riwayat pengambilan consumable"
+                    )
+        else:#curret_role=='user'
+            print("pinjam - untuk melakukan peminjaman gadget"
+                  "\nkembalikan - untuk mengembalikan gadget"
+                  "\nminta - untuk meminta consumable yang tersedia"
+                    )
+        print("save - untuk melakukan penyimpanan data"
+              "\nhelp - untuk panduan penggunaan penggunaan sistem"
+              "\nexit - untuk keluar dari aplikasi"
+                )
+
     #F17 - Exit
+    if pilihan == 'exit':
+        pil = input("Apakah anda mau melakukan penyimpanan file yang sudah diubah? (y/n)")
+        if pil == "y":
+            path = input("Masukkan Folder tempat file akan di save: ")
+            save(path, user, gadget, consumable, consumable_history, gadget_borrow_history, gadget_return_history)
+        break
     #FB01 - Hashing
         #Done pada hashing.py
     #FB02 - Mengembalikan Gadget Secara Parsial
