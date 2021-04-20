@@ -11,7 +11,7 @@ from add_data import *
 from write_csv import save
 from login import login
 from caritahun import cari_tahun
-from see_history import see_gadget_return_history,see_consumable_history
+from see_history import see_gadget_return_history,see_consumable_history,see_gadget_borrow_history
 from interface import *
 import argparse
 import os,time
@@ -132,7 +132,7 @@ while valid:
     #F09 - Mengembalikan Gadget
     if pilihan=='kembalikan':
         if curret_role=='user':
-            add_data_gadget_return_history(id,gadget,gadget_borrow_history,gadget_return_history)
+            add_data_gadget_return_history(curret_id,gadget,gadget_borrow_history,gadget_return_history)
         else:
             print("Fungsi Hanya diperbolehkan untuk User")
     #F10 - Meminta Consumable
@@ -142,6 +142,9 @@ while valid:
         else:
             print("Fungsi Hanya diperbolehkan untuk user")
     #F11 - Melihat Riwayat Peminjaman Gadget
+    if pilihan=='riwayatpinjam':
+        if curret_role=='admin':
+            see_gadget_borrow_history(user,gadget,gadget_borrow_history)
     #F12 - Melihat Riwayat Pengembalian Gadget
     if pilihan=='riwayatkembali':
         if curret_role=='admin':
