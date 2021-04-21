@@ -88,7 +88,7 @@ while valid:
 
             elif id_item[0] == 'C':
                 for i in range(1,len(consumable)):
-                    if gadget[i][0] == id_item:
+                    if consumable[i][0] == id_item:
                         cek += 1
                 if cek > 0:
                     print("Gagal menambahkan item karena ID sudah ada.")
