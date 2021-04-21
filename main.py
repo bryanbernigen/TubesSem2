@@ -187,11 +187,11 @@ while valid:
                   "\nriwayatambil      - untuk melihat riwayat pengambilan consumable"
                     )
         else:#curret_role=='user'
-            print("pinjam              - untuk melakukan peminjaman gadget"
-                  "\nkembalikan        - untuk mengembalikan gadget"
-                  "\nminta             - untuk meminta consumable yang tersedia"
+            print("pinjam               - untuk melakukan peminjaman gadget"
+                  "\nkembalikan          - untuk mengembalikan gadget"
+                  "\nminta               - untuk meminta consumable yang tersedia"
                     )
-        print("save                    - untuk melakukan penyimpanan data"
+        print("save                   - untuk melakukan penyimpanan data"
               "\nhelp                  - untuk panduan penggunaan penggunaan sistem"
               "\nexit                  - untuk keluar dari aplikasi"
                 )
