@@ -628,7 +628,7 @@ def add_data_gadget_borrow_history(id_pengambil,gadget,gadget_history):
                 print("Jumlah harus lebih dari 0")
             elif gadget[nomor_gadget][3]-jumlah<0:
                 os.system("cls")
-                print("Jumlanh yang akan diambil melebihi persediaan. Jumlah penagambilan maksimal: {}".format(gadget[nomor_gadget][3]))
+                print("Jumlah yang akan diambil melebihi persediaan. Jumlah penagambilan maksimal: {}".format(gadget[nomor_gadget][3]))
             else:
                 print("Anda akan mengambil {} sebanyak {} buah".format(nama_gadget,jumlah))
                 validasi=input("Apakah sudah benar? (y/n) : ")
