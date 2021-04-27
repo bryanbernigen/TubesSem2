@@ -628,7 +628,7 @@ def add_data_gadget_borrow_history(id_pengambil,gadget,gadget_history):
                 print("Jumlah harus lebih dari 0")
             elif gadget[nomor_gadget][3]-jumlah<0:
                 os.system("cls")
-                print("Jumlanh yang akan diambil melebihi persediaan. Jumlah penagambilan maksimal: {}".format(gadget[nomor_gadget][3]))
+                print("Jumlah yang akan diambil melebihi persediaan. Jumlah pengambilan maksimal: {}".format(gadget[nomor_gadget][3]))
             else:
                 print("Anda akan mengambil {} sebanyak {} buah".format(nama_gadget,jumlah))
                 validasi=input("Apakah sudah benar? (y/n) : ")
@@ -674,6 +674,7 @@ def add_data_gadget_borrow_history(id_pengambil,gadget,gadget_history):
 
 def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,gadget_return_history):
     #membuat list gadget apa saja yang pernah dipinjam user
+    os.system("cls")
     list_gadget_user_all=[]
     for j in range(len(gadget_borrow_history)):
         list_dummy=[]
@@ -692,6 +693,11 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
                 list_dummy.append(gadget_borrow_history[j][4])
                 list_gadget_user_all.append(list_dummy)
     
+    #Jika User belum pernah meminjam apapun
+    if list_gadget_user_all==[]:
+        print("Tidak ada gadget yang dapat dikembalikan")
+        return
+
     #Mengecek Gadget Apa saja yang sudah dikembalikan
     for j in range(len(gadget_return_history)):
         if gadget_return_history[j][1]==id_pengembali:
@@ -711,7 +717,7 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
     print(f"{'NO':<5} {'ID':<5} {'Nama Gadget':<30} {'Jumlah':<10}")
     for j in range(len(list_gadget_user_all)):
         print("{:<5} {:<5} {:<30} {:<10}".format(j+1,list_gadget_user_all[j][0],list_gadget_user_all[j][1],list_gadget_user_all[j][2]))
-
+    print("")
     #Menanyakan User Gadget mana yang akan dikembalikan
     id_gadget_yang_akan_dikembalikan=input("Masukkan ID Gadget yang akan dikembalikan : ")
     found=False
@@ -728,7 +734,7 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
     #Jika Input ID salah
     if not found:
         return
-
+    os.system("cls")
     #Validasi Pengembalian
     print("ID Gadget            : ",id_gadget_yang_akan_dikembalikan)
     print("Nama Gadget          : ",nama_gadget_yang_akan_dikembalikan)
@@ -761,6 +767,7 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
         list_dummy.append(jumlah_yang_akan_dikembalikan)
         list_dummy.append(nama_gadget_yang_akan_dikembalikan)
         gadget_return_history.append(list_dummy)
+        os.system("cls")
 
 def delete_gadget(id_gadget_yang_akan_dihapus,gadget):
     os.system("cls")

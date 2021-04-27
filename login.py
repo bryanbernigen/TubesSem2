@@ -1,5 +1,6 @@
 import os
 import time
+from interface import *
 from hashing import hashing
 
 def login(user):
@@ -18,6 +19,7 @@ def login(user):
         global curret_id
         global curret_role
         os.system("cls")
+        kantongajaib()
         print("Halo",username,"! Selamat datang di Kantong Ajaib")
         time.sleep(2)
         curret_id=user[baris_user][0]
