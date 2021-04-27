@@ -305,7 +305,7 @@ def add_data_gadget(id,gadget):
             print("Tahun Ditemukan  : ")
             print("")
             try:
-                tahun=int(input("Masukkan tahun benda ditemukkan : "))
+                tahun=int(input("Masukkan tahun benda ditemukan : "))
             except ValueError:
                 os.system("cls")
                 print("Jumlah benda harus dalam bentuk integer")
@@ -491,8 +491,8 @@ def add_data_consumable_history(id_pengambil,consumable,consumable_history):
                 print("Jumlah       :",consumable[nomor_consumable][3])
                 print("Rarity       :",consumable[nomor_consumable][4])
                 print("")
-                valisdasi=input("Apakah Anda akan mengambil consumable tersebut? (y/n) : ")
-                if valisdasi=='y':
+                validasi=input("Apakah Anda akan mengambil consumable tersebut? (y/n) : ")
+                if validasi=='y':
                     os.system("cls")
                     nama_consumable=consumable[nomor_consumable][1]
                     stage+=1

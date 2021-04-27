@@ -173,7 +173,7 @@ while valid:
         loaded,user,gadget,consumable,consumable_history,gadget_borrow_history,gadget_return_history=data
     #F16 - Help
     if pilihan == 'help':
-        print("============= HELP ============="
+        print("================== HELP =================="
               "\nregister              - untuk melakukan registrasi user baru"
               "\nlogin                 - untuk melakukan login ke dalam sistem"
               "\ncarirarity            - untuk mencari gadget dengan rarity tertentu"
@@ -199,7 +199,7 @@ while valid:
     #F17 - Exit
     if pilihan == 'exit':
         pil = input("Apakah anda mau melakukan penyimpanan file yang sudah diubah? (y/n)")
-        if pil == "y":
+        if pil == "y" or "Y":
             path = input("Masukkan Folder tempat file akan di save: ")
             save(path, user, gadget, consumable, consumable_history, gadget_borrow_history, gadget_return_history)
         break
