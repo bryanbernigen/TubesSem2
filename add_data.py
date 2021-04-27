@@ -693,6 +693,11 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
                 list_dummy.append(gadget_borrow_history[j][4])
                 list_gadget_user_all.append(list_dummy)
     
+    #Jika User belum pernah meminjam apapun
+    if list_gadget_user_all==[]:
+        print("Tidak ada gadget yang dapat dikembalikan")
+        return
+
     #Mengecek Gadget Apa saja yang sudah dikembalikan
     for j in range(len(gadget_return_history)):
         if gadget_return_history[j][1]==id_pengembali:
