@@ -13,14 +13,14 @@ def read_csv(nama_file):
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
-    lines_all_koma=[raw_line.replace("\n",",") for raw_line in raw_lines]
+    lines_all_koma=[raw_line.replace("\n",";") for raw_line in raw_lines]
     f.close()
 
 
     #Menghitung Jumlah Kolom
     jumlah_kolom=0
     for i in range (len(lines_all_koma[0])):
-        if lines_all_koma[0][i]==',':
+        if lines_all_koma[0][i]==';':
             jumlah_kolom += 1 
 
 
@@ -28,7 +28,7 @@ def read_csv(nama_file):
     jumlah_data = 1 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
     for j in range(len(lines_all_koma)):
         for i in range (len(lines_all_koma[j])):
-            if lines_all_koma[j][i]==',':
+            if lines_all_koma[j][i]==';':
                 jumlah_data += 1 
     jumlah_baris=jumlah_data // jumlah_kolom
 
@@ -38,7 +38,7 @@ def read_csv(nama_file):
     for j in range (len(lines)):
         word=''
         for i in range (len(lines[j])):
-            if lines[j][i] == ',' and word != '':
+            if lines[j][i] == ';' and word != '':
                 list_panjang.append(word)
                 word = ''
             else:
@@ -86,14 +86,14 @@ def read_user(nama_file,path_ralatif_terhadap_sekarang):
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
-    lines_all_koma=[raw_line.replace("\n",",") for raw_line in raw_lines]
+    lines_all_koma=[raw_line.replace("\n",";") for raw_line in raw_lines]
     f.close()
 
 
     #Menghitung Jumlah Kolom
     jumlah_kolom=0
     for i in range (len(lines_all_koma[0])):
-        if lines_all_koma[0][i]==',':
+        if lines_all_koma[0][i]==';':
             jumlah_kolom += 1 
 
 
@@ -101,7 +101,7 @@ def read_user(nama_file,path_ralatif_terhadap_sekarang):
     jumlah_data = 1 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
     for j in range(len(lines_all_koma)):
         for i in range (len(lines_all_koma[j])):
-            if lines_all_koma[j][i]==',':
+            if lines_all_koma[j][i]==';':
                 jumlah_data += 1 
     jumlah_baris=jumlah_data // jumlah_kolom
 
@@ -111,7 +111,7 @@ def read_user(nama_file,path_ralatif_terhadap_sekarang):
     for j in range (len(lines)):
         word=''
         for i in range (len(lines[j])):
-            if lines[j][i] == ',' and word != '':
+            if lines[j][i] == ';' and word != '':
                 list_panjang.append(word)
                 word = ''
             else:
@@ -162,14 +162,14 @@ def read_gadget(nama_file,path_ralatif_terhadap_sekarang):
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
-    lines_all_koma=[raw_line.replace("\n",",") for raw_line in raw_lines]
+    lines_all_koma=[raw_line.replace("\n",";") for raw_line in raw_lines]
     f.close()
 
 
     #Menghitung Jumlah Kolom
     jumlah_kolom=0
     for i in range (len(lines_all_koma[0])):
-        if lines_all_koma[0][i]==',':
+        if lines_all_koma[0][i]==';':
             jumlah_kolom += 1 
 
 
@@ -177,7 +177,7 @@ def read_gadget(nama_file,path_ralatif_terhadap_sekarang):
     jumlah_data = 1 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
     for j in range(len(lines_all_koma)):
         for i in range (len(lines_all_koma[j])):
-            if lines_all_koma[j][i]==',':
+            if lines_all_koma[j][i]==';':
                 jumlah_data += 1 
     jumlah_baris=jumlah_data // jumlah_kolom
 
@@ -187,7 +187,7 @@ def read_gadget(nama_file,path_ralatif_terhadap_sekarang):
     for j in range (len(lines)):
         word=''
         for i in range (len(lines[j])):
-            if lines[j][i] == ',' and word != '':
+            if lines[j][i] == ';' and word != '':
                 list_panjang.append(word)
                 word = ''
             else:
@@ -238,14 +238,14 @@ def read_consumable(nama_file,path_ralatif_terhadap_sekarang):
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
-    lines_all_koma=[raw_line.replace("\n",",") for raw_line in raw_lines]
+    lines_all_koma=[raw_line.replace("\n",";") for raw_line in raw_lines]
     f.close()
 
 
     #Menghitung Jumlah Kolom
     jumlah_kolom=0
     for i in range (len(lines_all_koma[0])):
-        if lines_all_koma[0][i]==',':
+        if lines_all_koma[0][i]==';':
             jumlah_kolom += 1 
 
 
@@ -253,7 +253,7 @@ def read_consumable(nama_file,path_ralatif_terhadap_sekarang):
     jumlah_data = 1 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
     for j in range(len(lines_all_koma)):
         for i in range (len(lines_all_koma[j])):
-            if lines_all_koma[j][i]==',':
+            if lines_all_koma[j][i]==';':
                 jumlah_data += 1 
     jumlah_baris=jumlah_data // jumlah_kolom
 
@@ -263,7 +263,7 @@ def read_consumable(nama_file,path_ralatif_terhadap_sekarang):
     for j in range (len(lines)):
         word=''
         for i in range (len(lines[j])):
-            if lines[j][i] == ',' and word != '':
+            if lines[j][i] == ';' and word != '':
                 list_panjang.append(word)
                 word = ''
             else:
@@ -312,14 +312,14 @@ def read_consumable_history(nama_file,path_ralatif_terhadap_sekarang):
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
-    lines_all_koma=[raw_line.replace("\n",",") for raw_line in raw_lines]
+    lines_all_koma=[raw_line.replace("\n",";") for raw_line in raw_lines]
     f.close()
 
 
     #Menghitung Jumlah Kolom
     jumlah_kolom=0
     for i in range (len(lines_all_koma[0])):
-        if lines_all_koma[0][i]==',':
+        if lines_all_koma[0][i]==';':
             jumlah_kolom += 1 
 
 
@@ -327,7 +327,7 @@ def read_consumable_history(nama_file,path_ralatif_terhadap_sekarang):
     jumlah_data = 1 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
     for j in range(len(lines_all_koma)):
         for i in range (len(lines_all_koma[j])):
-            if lines_all_koma[j][i]==',':
+            if lines_all_koma[j][i]==';':
                 jumlah_data += 1 
     jumlah_baris=jumlah_data // jumlah_kolom
 
@@ -337,7 +337,7 @@ def read_consumable_history(nama_file,path_ralatif_terhadap_sekarang):
     for j in range (len(lines)):
         word=''
         for i in range (len(lines[j])):
-            if lines[j][i] == ',' and word != '':
+            if lines[j][i] == ';' and word != '':
                 list_panjang.append(word)
                 word = ''
             else:
@@ -388,14 +388,14 @@ def read_gadget_borrow_history(nama_file,path_ralatif_terhadap_sekarang):
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
-    lines_all_koma=[raw_line.replace("\n",",") for raw_line in raw_lines]
+    lines_all_koma=[raw_line.replace("\n",";") for raw_line in raw_lines]
     f.close()
 
 
     #Menghitung Jumlah Kolom
     jumlah_kolom=0
     for i in range (len(lines_all_koma[0])):
-        if lines_all_koma[0][i]==',':
+        if lines_all_koma[0][i]==';':
             jumlah_kolom += 1 
 
 
@@ -403,7 +403,7 @@ def read_gadget_borrow_history(nama_file,path_ralatif_terhadap_sekarang):
     jumlah_data = 1 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
     for j in range(len(lines_all_koma)):
         for i in range (len(lines_all_koma[j])):
-            if lines_all_koma[j][i]==',':
+            if lines_all_koma[j][i]==';':
                 jumlah_data += 1 
     jumlah_baris=jumlah_data // jumlah_kolom
 
@@ -413,7 +413,7 @@ def read_gadget_borrow_history(nama_file,path_ralatif_terhadap_sekarang):
     for j in range (len(lines)):
         word=''
         for i in range (len(lines[j])):
-            if lines[j][i] == ',' and word != '':
+            if lines[j][i] == ';' and word != '':
                 list_panjang.append(word)
                 word = ''
             else:
@@ -465,14 +465,14 @@ def read_gadget_return_history(nama_file,path_ralatif_terhadap_sekarang):
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
-    lines_all_koma=[raw_line.replace("\n",",") for raw_line in raw_lines]
+    lines_all_koma=[raw_line.replace("\n",";") for raw_line in raw_lines]
     f.close()
 
 
     #Menghitung Jumlah Kolom
     jumlah_kolom=0
     for i in range (len(lines_all_koma[0])):
-        if lines_all_koma[0][i]==',':
+        if lines_all_koma[0][i]==';':
             jumlah_kolom += 1 
 
 
@@ -480,7 +480,7 @@ def read_gadget_return_history(nama_file,path_ralatif_terhadap_sekarang):
     jumlah_data = 1 #Mulai dari 1 karena data kolom terakhir baris terakhir tidak ada ,
     for j in range(len(lines_all_koma)):
         for i in range (len(lines_all_koma[j])):
-            if lines_all_koma[j][i]==',':
+            if lines_all_koma[j][i]==';':
                 jumlah_data += 1 
     jumlah_baris=jumlah_data // jumlah_kolom
 
@@ -490,7 +490,7 @@ def read_gadget_return_history(nama_file,path_ralatif_terhadap_sekarang):
     for j in range (len(lines)):
         word=''
         for i in range (len(lines[j])):
-            if lines[j][i] == ',' and word != '':
+            if lines[j][i] == ';' and word != '':
                 list_panjang.append(word)
                 word = ''
             else:

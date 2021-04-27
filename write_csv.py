@@ -32,7 +32,7 @@ def write_csv(data_yang_akan_di_save,nama_file_yang_di_save,path_relatif_terhada
             if j%jumlah_kolom == 0:
                 var_dummy+="\n"
             else:
-                var_dummy+=","
+                var_dummy+=";"
         for i in range(len(list_array[j])):
             var_dummy+=list_array[j][i]
     #list_panjang.append(var_dummy)
