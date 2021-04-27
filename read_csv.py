@@ -384,7 +384,7 @@ def read_consumable_history(nama_file,path_ralatif_terhadap_sekarang):
 
 def read_gadget_borrow_history(nama_file,path_ralatif_terhadap_sekarang):
     #Membuka File CSV
-    f = open("csv_datas/{}".format(nama_file),"r")
+    f = open("{}/{}".format(path_ralatif_terhadap_sekarang,nama_file),"r")
     raw_lines = f.readlines()
     raw_lines_2=[raw_line.replace("\n","") for raw_line in raw_lines]
     lines=[raw_line.replace("\n","") for raw_line in raw_lines_2]
