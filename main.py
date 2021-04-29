@@ -199,7 +199,7 @@ while valid:
     #F17 - Exit
     if pilihan == 'exit':
         pil = input("Apakah anda mau melakukan penyimpanan file yang sudah diubah? (y/n)")
-        if pil == "y" or "Y":
+        if pil == "y" or pil == "Y":
             path = input("Masukkan Folder tempat file akan di save: ")
             save(path, user, gadget, consumable, consumable_history, gadget_borrow_history, gadget_return_history)
         break
