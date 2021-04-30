@@ -686,13 +686,21 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
                     added=True
             if not added:
                 list_dummy.append(gadget_borrow_history[j][2])
-                for jj in range(len(gadget_return_history)):
-                    if gadget_return_history[jj][2]==gadget_borrow_history[j][2]:
-                        list_dummy.append(gadget_return_history[jj][5])
+                #Tambah Nama Gadget
+                found=False
+                for jj in range(len(gadget)):
+                    if gadget[jj][0]==gadget_borrow_history[j][2]:
+                        list_dummy.append(gadget[jj][1])
+                        found=True
                         break
+                if not found:
+                    for jj in range(len(gadget_return_history)):
+                        if gadget_return_history[jj][2]==gadget_borrow_history[j][2]:
+                            list_dummy.append(gadget_return_history[jj][5])
+                            break
                 list_dummy.append(gadget_borrow_history[j][4])
                 list_gadget_user_all.append(list_dummy)
-    
+
     #Jika User belum pernah meminjam apapun
     if list_gadget_user_all==[]:
         print("Tidak ada gadget yang dapat dikembalikan")
@@ -704,14 +712,15 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
             for jj in range(len(list_gadget_user_all)):
                 if gadget_return_history[j][2]==list_gadget_user_all[jj][0]:
                     list_gadget_user_all[jj][2]-=gadget_return_history[j][4]
-    
+
     #Menghapus Gadget yang sudah dikembalikan sepenuhnya
+
     n=0
     for j in range(len(list_gadget_user_all)):
        i=j-n
        if list_gadget_user_all[i][2]==0:
            del list_gadget_user_all[i]
-           n+=1 
+           n+=1
 
     #Mencetak Gadget apa saja yang masih dipinjam user tersebut
     print(f"{'NO':<5} {'ID':<5} {'Nama Gadget':<30} {'Jumlah':<10}")
