@@ -27,15 +27,13 @@ def see_gadget_borrow_history(user,gadget,gadget_borrow_history):
             list_full.append(list_dummy)
 
     #Mengurutkan List
-    list_terurut=[]
-    jj=len(list_full)+1
-    for j in range(len(list_full)):
-        jj-=1
-        list_dummy=list_full[j]
-        for i in range(1,jj):
-            if list_dummy[3]<list_full[i][3]:
-                list_dummy,list_full[i]=list_full[i],list_dummy
-        list_terurut.append(list_dummy)
+    for j in range(1,len(list_full)):
+        nmax=j-1
+        for jj in range(j,len(list_full)):
+            if int(list_full[nmax][3])<int(list_full[jj][3]):
+                nmax=jj
+        list_full[j-1],list_full[nmax]=list_full[nmax],list_full[j-1]
+    list_terurut=list_full
     
     #mengembalikan tanggal ke bentuk string
     for j in range(len(list_terurut)):
@@ -100,15 +98,13 @@ def see_gadget_return_history(user,gadget,gadget_return_history):
         list_full.append(list_dummy)
 
     #Mengurutkan List
-    list_terurut=[]
-    jj=len(list_full)+1
-    for j in range(len(list_full)):
-        jj-=1
-        list_dummy=list_full[j]
-        for i in range(1,jj):
-            if list_dummy[3]<list_full[i][3]:
-                list_dummy,list_full[i]=list_full[i],list_dummy
-        list_terurut.append(list_dummy)
+    for j in range(1,len(list_full)):
+        nmax=j-1
+        for jj in range(j,len(list_full)):
+            if int(list_full[nmax][3])<int(list_full[jj][3]):
+                nmax=jj
+        list_full[j-1],list_full[nmax]=list_full[nmax],list_full[j-1]
+    list_terurut=list_full
     
     #mengembalikan tanggal ke bentuk string
     for j in range(len(list_terurut)):
@@ -174,15 +170,13 @@ def see_consumable_history(user,consumable,consumable_history):
             list_full.append(list_dummy)
 
     #Mengurutkan List
-    list_terurut=[]
-    jj=len(list_full)+1
-    for j in range(len(list_full)):
-        jj-=1
-        list_dummy=list_full[j]
-        for i in range(1,jj):
-            if list_dummy[3]<list_full[i][3]:
-                list_dummy,list_full[i]=list_full[i],list_dummy
-        list_terurut.append(list_dummy)
+    for j in range(1,len(list_full)):
+        nmax=j-1
+        for jj in range(j,len(list_full)):
+            if int(list_full[nmax][3])<int(list_full[jj][3]):
+                nmax=jj
+        list_full[j-1],list_full[nmax]=list_full[nmax],list_full[j-1]
+    list_terurut=list_full
     
     #mengembalikan tanggal ke bentuk string
     for j in range(len(list_terurut)):
