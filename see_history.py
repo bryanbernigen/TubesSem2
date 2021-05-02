@@ -13,9 +13,14 @@ def see_gadget_borrow_history(user,gadget,gadget_borrow_history):
                     list_dummy.append(user[jj][1])
                     break
             for jj in range(len(gadget)):
+                found=False
                 if gadget_borrow_history[j][2]==gadget[jj][0]:
+                    found=True
                     list_dummy.append(gadget[jj][1])
                     break
+            if not found:
+                list_dummy.append("Tidak Diketahui (Sudah dihapus dari inventory Gadget)")
+            
             #membuat tanggal menjadi sebuah integer
             tanggal_int=''
             tanggal_int+=gadget_borrow_history[j][3][6]+gadget_borrow_history[j][3][7]+gadget_borrow_history[j][3][8]+gadget_borrow_history[j][3][9]
