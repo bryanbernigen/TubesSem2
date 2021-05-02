@@ -997,7 +997,6 @@ def gacha(id_user,consumable,consumable_history):
             else:
                 os.system("cls")
         else:
-            print(list_sementara)
             again=input("Apakah Anda akan menambahkan consumable lain? (y/n) : ")
             if again!='y':
                 os.system("cls")
@@ -1034,6 +1033,7 @@ def gacha(id_user,consumable,consumable_history):
                     total_item+=list_gacha[j][2]
                 else:
                     total+=list_gacha[j][2]*4
+                    total_item+=list_gacha[j][2]
             #Rata-rata rarity
             angka_rarity=round(total/total_item)
 
