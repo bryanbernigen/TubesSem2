@@ -16,6 +16,62 @@ from hashing import hashing
 # Fungsi akan menambah data dengan jumlah kolom yang sama dengan data acuan;
 # Fungsi tidak akan memvalidasi input yang sama (Contoh: Username sama tidak apa-apa)
 # Jika ingin divalidasi silahkan  edit pada bagian meminta user untuk memasukkan data
+def validasi_tanggal(tanggal):
+    tanggal=str(tanggal)
+    if len(tanggal)!=10:
+        return False
+    if tanggal[2]!='/' or tanggal[5]!='/':
+        return False
+    hari=tanggal[0]+tanggal[1]
+    bulan=tanggal[3]+tanggal[4]
+    tahun=tanggal[6]+tanggal[7]+tanggal[8]+tanggal[9]
+    hari=int(hari)
+    bulan=int(bulan)
+    tahun=int(tahun)
+    if hari>31: return False
+    if bulan>12: return False
+    if tahun<0: return False
+    if tahun%400==0: #kabisat
+        if bulan==2:
+            if hari<=28:
+                return True
+        elif bulan==1 or bulan==3 or bulan==5 or bulan==7 or bulan==8 or bulan==10 or bulan==12:
+            if hari<=31:
+                return True
+        else:
+            if hari<=30:
+                return True
+    elif tahun%100==0: #bukan kabisat
+        if bulan==2:
+            if hari<=29:
+                return True
+        elif bulan==1 or bulan==3 or bulan==5 or bulan==7 or bulan==8 or bulan==10 or bulan==12:
+            if hari<=31:
+                return True
+        else:
+            if hari<=30:
+                return True        
+    elif tahun%4==0: #kabisat
+        if bulan==2:
+            if hari<=28:
+                return True
+        elif bulan==1 or bulan==3 or bulan==5 or bulan==7 or bulan==8 or bulan==10 or bulan==12:
+            if hari<=31:
+                return True
+        else:
+            if hari<=30:
+                return True
+    else: #bukan kabisat
+        if bulan==2:
+            if hari<=29:
+                return True
+        elif bulan==1 or bulan==3 or bulan==5 or bulan==7 or bulan==8 or bulan==10 or bulan==12:
+            if hari<=31:
+                return True
+        else:
+            if hari<=30:
+                return True         
+
 def add_data(data_yang_akan_ditambah):
     data=data_yang_akan_ditambah
     #jumlah_baris=len(data)
@@ -538,14 +594,18 @@ def add_data_consumable_history(id_pengambil,consumable,consumable_history):
         print("Tanggal          : ")
         print("")
         tanggal=input("Masukkan tanggal pengambilan (dd/mm/yyyy) : ")
-        print("Anda akan memasukkan {} sebagai tanggal pengambilan".format(tanggal))
-        validasi=input("Apakah sudah benar? (y/n) : ")
-        if validasi=='y':
-            os.system("cls")
-            stage+=1
+        if validasi_tanggal(tanggal):
+            print("Anda akan memasukkan {} sebagai tanggal pengambilan".format(tanggal))
+            validasi=input("Apakah sudah benar? (y/n) : ")
+            if validasi=='y':
+                os.system("cls")
+                stage+=1
+            else:
+                os.system("cls")
+                print("Tanggal gagal dimasukkan")
         else:
             os.system("cls")
-            print("Tanggal gagal dimasukkan")
+            print("Tanggal tidak Valid")
     list_dummy.append(tanggal)
     list_dummy.append(jumlah)
 
@@ -645,14 +705,18 @@ def add_data_gadget_borrow_history(id_pengambil,gadget,gadget_history):
         print("Tanggal          : ")
         print("")
         tanggal=input("Masukkan tanggal pengambilan (dd/mm/yyyy) : ")
-        print("Anda akan memasukkan {} sebagai tanggal pengambilan".format(tanggal))
-        validasi=input("Apakah sudah benar? (y/n) : ")
-        if validasi=='y':
-            os.system("cls")
-            stage+=1
+        if validasi_tanggal(tanggal):
+            print("Anda akan memasukkan {} sebagai tanggal pengambilan".format(tanggal))
+            validasi=input("Apakah sudah benar? (y/n) : ")
+            if validasi=='y':
+                os.system("cls")
+                stage+=1
+            else:
+                os.system("cls")
+                print("Tanggal gagal dimasukkan")
         else:
             os.system("cls")
-            print("Tanggal gagal dimasukkan")
+            print("Tanggal tidak valid")
     list_dummy.append(tanggal)
     list_dummy.append(jumlah)
 
@@ -738,6 +802,10 @@ def add_data_gadget_return_history(id_pengembali,gadget,gadget_borrow_history,ga
             else:
                 nama_gadget_yang_akan_dikembalikan=list_gadget_user_all[j][1]
                 tanggal=input("Masukkan tanggal pengembalian : ")
+                while not validasi_tanggal(tanggal):
+                    os.system("cls")
+                    print("Tanggal tidak valid")
+                    tanggal=input("Masukkan tanggal pengembalian : ")
                 found=True
     
     #Jika Input ID salah
