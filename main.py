@@ -138,7 +138,7 @@ while valid:
     #F10 - Meminta Consumable
     if pilihan=='minta':
         if curret_role=='user':
-            add_data_consumable_history(id,consumable,consumable_history)
+            add_data_consumable_history(curret_id,consumable,consumable_history)
         else:
             print("Fungsi Hanya diperbolehkan untuk user")
     #F11 - Melihat Riwayat Peminjaman Gadget
